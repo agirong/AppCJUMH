@@ -6,7 +6,7 @@ Public Class Form5
 
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Establecer la conexión con la base de datos
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
         connection = New SqlConnection(connectionString)
 
         ' Llenar ComboBox1 con los nombres y apellidos de la tabla usuario
@@ -97,7 +97,7 @@ Public Class Form5
     End Sub
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Try
             Using conexion As New SqlConnection(connectionString)

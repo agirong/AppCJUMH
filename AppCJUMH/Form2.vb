@@ -4,7 +4,7 @@ Public Class Form2
     Dim comando As SqlCommand
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Try
             Using conexion As New SqlConnection(connectionString)
@@ -88,5 +88,9 @@ Public Class Form2
             ' Cancelar el evento de tecla presionada
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

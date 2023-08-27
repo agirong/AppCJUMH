@@ -2,7 +2,7 @@
 
 Public Class Form4
     Dim comando As SqlCommand
-    Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+    Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
     Dim connection As New SqlConnection(connectionString)
 
     Private Function ObtenerDatos1() As DataTable

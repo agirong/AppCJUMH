@@ -9,7 +9,7 @@ Public Class Form3
     Private datos2 As DataTable
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
         connection = New SqlConnection(connectionString)
 
         Try
@@ -35,7 +35,7 @@ Public Class Form3
 
     Private Function ObtenerDatos1() As DataTable
         Dim datos As New DataTable()
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Using connection As New SqlConnection(connectionString)
             connection.Open()
@@ -51,7 +51,7 @@ Public Class Form3
 
     Private Function ObtenerDatos2() As DataTable
         Dim datos As New DataTable()
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Using connection As New SqlConnection(connectionString)
             connection.Open()
@@ -86,7 +86,7 @@ Public Class Form3
     End Function
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
-        Dim connectionString As String = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Try
             Using conexion As New SqlConnection(connectionString)
