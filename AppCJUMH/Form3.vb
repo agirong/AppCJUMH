@@ -41,10 +41,10 @@ Public Class Form3
     '    Return dataTable
     'End Function
 
-    Private Sub HandleError(message As String)
-        'registro de errores o mostrar un MessageBox
-        MessageBox.Show(message)
-    End Sub
+    'Private Sub HandleError(message As String)
+    '    'registro de errores o mostrar un MessageBox
+    '    MessageBox.Show(message)
+    'End Sub
     'Ym. Mejorar la funcion de obtener el Numero de Celular.
     Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
 
@@ -75,27 +75,25 @@ Public Class Form3
     'YM. Mejorar la conexión del metodó guardar.
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
-            Using conexion As New SqlConnection(ConnectionString)
-                conexion.Open()
+            Dim parametros As SqlParameter() = {
+                New SqlParameter("@procurador_que_delega", ComboBox1.SelectedValue.ToString),
+                New SqlParameter("@número_expediente", Int64.Parse(txtnumeroexpediente.Text)),
+                New SqlParameter("@numero_juez", txtnumerojuez.Text),
+                New SqlParameter("@caso", txtcaso.Text),
+                New SqlParameter("@materia", ComboBox2.SelectedItem.ToString),
+                New SqlParameter("@usuario", ComboBox3.SelectedValue.ToString),
+                New SqlParameter("@teléfono_usuario", Integer.Parse(txttelefono.Text)),
+                New SqlParameter("@estado_actual", txtestadoactual.Text),
+                New SqlParameter("@observación", txtobservacion.Text),
+                New SqlParameter("@nuevo_iniciado", If(rbtnnuevo.Checked, "Nuevo", "Iniciado")),
+                New SqlParameter("@nuevo_procurador", txtnuevoprocurador.Text)
+            }
 
-                Dim consulta As String = "INSERT INTO delegaciones_procuradores (procurador_que_delega, número_expediente, numero_juez, caso, materia, usuario, teléfono_usuario, estado_actual, observación, nuevo_iniciado, nuevo_procurador) VALUES (@procurador_que_delega, @número_expediente, @numero_juez, @caso, @materia, @usuario, @teléfono_usuario, @estado_actual, @observación, @nuevo_iniciado, @nuevo_procurador)"
+            Dim consulta As String = "INSERT INTO delegaciones_procuradores (procurador_que_delega, número_expediente, numero_juez, caso, materia, usuario, teléfono_usuario, estado_actual, observación, nuevo_iniciado, nuevo_procurador) VALUES (@procurador_que_delega, @número_expediente, @numero_juez, @caso, @materia, @usuario, @teléfono_usuario, @estado_actual, @observación, @nuevo_iniciado, @nuevo_procurador)"
+            ConexionDB.InsertData(consulta, parametros)
 
-                comando = New SqlCommand(consulta, conexion)
-                comando.Parameters.AddWithValue("@procurador_que_delega", ComboBox1.SelectedValue.ToString)
-                comando.Parameters.AddWithValue("@número_expediente", Int64.Parse(txtnumeroexpediente.Text))
-                comando.Parameters.AddWithValue("@numero_juez", txtnumerojuez.Text)
-                comando.Parameters.AddWithValue("@caso", txtcaso.Text)
-                comando.Parameters.AddWithValue("@materia", ComboBox2.SelectedItem.ToString)
-                comando.Parameters.AddWithValue("@usuario", ComboBox3.SelectedValue.ToString)
-                comando.Parameters.AddWithValue("@teléfono_usuario", Integer.Parse(txttelefono.Text))
-                comando.Parameters.AddWithValue("@estado_actual", txtestadoactual.Text)
-                comando.Parameters.AddWithValue("@observación", txtobservacion.Text)
-                comando.Parameters.AddWithValue("@nuevo_iniciado", If(rbtnnuevo.Checked, "Nuevo", "Iniciado"))
-                comando.Parameters.AddWithValue("@nuevo_procurador", txtnuevoprocurador.Text)
+            MsgBox("Datos guardados correctamente")
 
-                comando.ExecuteNonQuery()
-                MsgBox("Datos guardados correctamente")
-            End Using
         Catch ex As Exception
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
         End Try
