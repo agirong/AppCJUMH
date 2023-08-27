@@ -78,7 +78,7 @@ Public Class Form1
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Dim conexion As New SqlClient.SqlConnection
-        conexion.ConnectionString = "Data Source=LAPTOP-DLNMBOV3\SQLEXPRESS;Initial Catalog=CJUMH;Integrated Security=True"
+        conexion.ConnectionString = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
         conexion.Open()
 
         'Dim selectedDate As DateTime = DateTimePicker1.Value
