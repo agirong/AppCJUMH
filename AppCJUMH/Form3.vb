@@ -5,14 +5,8 @@ Public Class Form3
     'YM. Definir una sola cadena de conexion para el Form3
     Private Const ConnectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
     Dim comando As SqlCommand
-    Dim connection As SqlConnection
-
-    Private datos1 As DataTable
-    Private datos2 As DataTable
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-        connection = New SqlConnection(connectionString)
 
         Try
             'YM. Llama r la funcion que Cargara los datos en los combobox 
