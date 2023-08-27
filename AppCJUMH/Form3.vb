@@ -47,7 +47,7 @@ Public Class Form3
     End Function
 
     Private Sub HandleError(message As String)
-        ' Aquí podrías realizar un registro de errores o mostrar un MessageBox
+        'registro de errores o mostrar un MessageBox
         MessageBox.Show(message)
     End Sub
     'Ym. Mejorar la funcion de obtener el Numero de Celular.
@@ -77,12 +77,10 @@ Public Class Form3
 
         Return numeroCelular
     End Function
-
+    'YM. Mejorar la conexión del metodó guardar.
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-
         Try
-            Using conexion As New SqlConnection(connectionString)
+            Using conexion As New SqlConnection(ConnectionString)
                 conexion.Open()
 
                 Dim consulta As String = "INSERT INTO delegaciones_procuradores (procurador_que_delega, número_expediente, numero_juez, caso, materia, usuario, teléfono_usuario, estado_actual, observación, nuevo_iniciado, nuevo_procurador) VALUES (@procurador_que_delega, @número_expediente, @numero_juez, @caso, @materia, @usuario, @teléfono_usuario, @estado_actual, @observación, @nuevo_iniciado, @nuevo_procurador)"
