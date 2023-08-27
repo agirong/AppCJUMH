@@ -134,7 +134,12 @@ Public Class Form5
     End Sub
 
     Private Sub btnsalir_Click(sender As Object, e As EventArgs) Handles btnsalir.Click
-        MsgBox("Se va a cerrar el formulario")
+        MsgBox("Se dirige al menu principal, los dato no guardados se perderan.")
+        'YM. Crear una instancia del formulario que deseas mostrar
+        Dim frmPrincipal As New frmPrincipal()
+        'YM. Mostrar el formulario
+        frmPrincipal.Show()
+
         Me.Close()
     End Sub
 

@@ -6,7 +6,6 @@
         'YM. Mostrar el formulario
         form1.Show()
 
-        'YM. Opcionalmente, puedes ocultar el formulario actual
         Me.Hide()
     End Sub
 
@@ -17,7 +16,6 @@
         'YM. Mostrar el formulario
         form2.Show()
 
-        'YM. Opcionalmente, puedes ocultar el formulario actual
         Me.Hide()
     End Sub
 
@@ -28,7 +26,6 @@
         'YM. Mostrar el formulario
         form3.Show()
 
-        'YM. Opcionalmente, puedes ocultar el formulario actual
         Me.Hide()
     End Sub
 
@@ -39,7 +36,6 @@
         'YM. Mostrar el formulario
         form4.Show()
 
-        'YM. Opcionalmente, puedes ocultar el formulario actual
         Me.Hide()
     End Sub
 
@@ -50,7 +46,6 @@
         'YM. Mostrar el formulario
         form5.Show()
 
-        'YM. Opcionalmente, puedes ocultar el formulario actual
         Me.Hide()
     End Sub
 
@@ -58,4 +53,7 @@
 
     End Sub
 
+    Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
