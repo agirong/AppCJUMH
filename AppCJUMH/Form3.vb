@@ -31,47 +31,6 @@ Public Class Form3
             MessageBox.Show("Error al cargar los datos: " & ex.Message)
         End Try
     End Sub
-    'YM. La función GetDataTable se ha creado para reutilizar el patrón de obtener datos de la base de datos en forma de tabla
-    'Private Function GetDataTable(query As String, connection As SqlConnection) As DataTable
-    '    Dim dataTable As New DataTable()
-    '    Using command As New SqlCommand(query, connection)
-    '        Dim adapter As New SqlDataAdapter(command)
-    '        adapter.Fill(dataTable)
-    '    End Using
-    '    Return dataTable
-    'End Function
-
-    'Private Sub HandleError(message As String)
-    '    'registro de errores o mostrar un MessageBox
-    '    MessageBox.Show(message)
-    'End Sub
-    'Ym. Mejorar la funcion de obtener el Numero de Celular.
-    'Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
-
-    '    Dim numeroCelular As String = ""
-
-    '    Try
-    '        Using connection As New SqlConnection(ConnectionString)
-    '            connection.Open()
-
-    '            Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
-    '            Using command As New SqlCommand(query, connection)
-    '                command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
-    '                Dim reader As SqlDataReader = command.ExecuteReader()
-
-    '                If reader.Read() Then
-    '                    numeroCelular = reader("telefono_movil").ToString()
-    '                End If
-
-    '                reader.Close()
-    '            End Using
-    '        End Using
-    '    Catch ex As Exception
-    '        MessageBox.Show("Error al obtener el número de celular: " & ex.Message)
-    '    End Try
-
-    '    Return numeroCelular
-    'End Function
     'YM. Mejorar la conexión del metodó guardar.
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
