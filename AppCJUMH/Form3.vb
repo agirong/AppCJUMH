@@ -50,23 +50,30 @@ Public Class Form3
         ' Aquí podrías realizar un registro de errores o mostrar un MessageBox
         MessageBox.Show(message)
     End Sub
-
+    'Ym. Mejorar la funcion de obtener el Numero de Celular.
     Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
+
         Dim numeroCelular As String = ""
 
-        Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
-        Dim command As SqlCommand = New SqlCommand(query, connection)
-        command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
+        Try
+            Using connection As New SqlConnection(ConnectionString)
+                connection.Open()
 
-        connection.Open()
-        Dim reader As SqlDataReader = command.ExecuteReader()
+                Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
+                Using command As New SqlCommand(query, connection)
+                    command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
+                    Dim reader As SqlDataReader = command.ExecuteReader()
 
-        If reader.Read() Then
-            numeroCelular = reader("telefono_movil").ToString()
-        End If
+                    If reader.Read() Then
+                        numeroCelular = reader("telefono_movil").ToString()
+                    End If
 
-        reader.Close()
-        connection.Close()
+                    reader.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener el número de celular: " & ex.Message)
+        End Try
 
         Return numeroCelular
     End Function
