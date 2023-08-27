@@ -23,4 +23,30 @@ Public Class ConexionDB
             End Using
         End Using
     End Sub
+    'YM. FUNCION del Form3.vb para buscar el numero de celular 
+    Public Shared Function GetNumeroCelular(nombreApellidos As String) As String
+        Dim numeroCelular As String = ""
+
+        Try
+            Using connection As New SqlConnection(ConnectionString)
+                connection.Open()
+
+                Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
+                Using command As New SqlCommand(query, connection)
+                    command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
+                    Dim reader As SqlDataReader = command.ExecuteReader()
+
+                    If reader.Read() Then
+                        numeroCelular = reader("telefono_movil").ToString()
+                    End If
+
+                    reader.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Manejo de errores aquí
+        End Try
+
+        Return numeroCelular
+    End Function
 End Class

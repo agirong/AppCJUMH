@@ -46,32 +46,32 @@ Public Class Form3
     '    MessageBox.Show(message)
     'End Sub
     'Ym. Mejorar la funcion de obtener el Numero de Celular.
-    Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
+    'Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
 
-        Dim numeroCelular As String = ""
+    '    Dim numeroCelular As String = ""
 
-        Try
-            Using connection As New SqlConnection(ConnectionString)
-                connection.Open()
+    '    Try
+    '        Using connection As New SqlConnection(ConnectionString)
+    '            connection.Open()
 
-                Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
-                Using command As New SqlCommand(query, connection)
-                    command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
-                    Dim reader As SqlDataReader = command.ExecuteReader()
+    '            Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
+    '            Using command As New SqlCommand(query, connection)
+    '                command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
+    '                Dim reader As SqlDataReader = command.ExecuteReader()
 
-                    If reader.Read() Then
-                        numeroCelular = reader("telefono_movil").ToString()
-                    End If
+    '                If reader.Read() Then
+    '                    numeroCelular = reader("telefono_movil").ToString()
+    '                End If
 
-                    reader.Close()
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error al obtener el número de celular: " & ex.Message)
-        End Try
+    '                reader.Close()
+    '            End Using
+    '        End Using
+    '    Catch ex As Exception
+    '        MessageBox.Show("Error al obtener el número de celular: " & ex.Message)
+    '    End Try
 
-        Return numeroCelular
-    End Function
+    '    Return numeroCelular
+    'End Function
     'YM. Mejorar la conexión del metodó guardar.
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
@@ -122,7 +122,7 @@ Public Class Form3
         Try
             If ComboBox3.SelectedIndex <> -1 Then
                 Dim selectedNombreApellidos As String = ComboBox3.SelectedValue.ToString()
-                Dim numeroCelular As String = ObtenerNumeroCelular(selectedNombreApellidos)
+                Dim numeroCelular As String = ConexionDB.GetNumeroCelular(selectedNombreApellidos)
                 txttelefono.Text = numeroCelular
             End If
         Catch ex As Exception
