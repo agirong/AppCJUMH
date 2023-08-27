@@ -17,28 +17,29 @@ Public Class Form3
     End Sub
     'YM. Definir una funcion para cargar los datos en los combobox
     Private Sub LoadComboBoxData()
-        Using connection As New SqlConnection(ConnectionString)
-            connection.Open()
-            ComboBox3.DataSource = GetDataTable("SELECT nombre_y_apellidos FROM usuario", connection)
+        Try
+            ComboBox3.DataSource = ConexionDB.GetDataTable("SELECT nombre_y_apellidos FROM usuario")
             ComboBox3.DisplayMember = "nombre_y_apellidos"
             ComboBox3.ValueMember = "nombre_y_apellidos"
 
-            ComboBox1.DataSource = GetDataTable("SELECT procurador_que_delega FROM delegaciones_procuradores", connection)
+            ComboBox1.DataSource = ConexionDB.GetDataTable("SELECT procurador_que_delega FROM delegaciones_procuradores")
             ComboBox1.DisplayMember = "procurador_que_delega"
             ComboBox1.ValueMember = "procurador_que_delega"
 
             ComboBox3.SelectedIndex = -1
-        End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar los datos: " & ex.Message)
+        End Try
     End Sub
     'YM. La función GetDataTable se ha creado para reutilizar el patrón de obtener datos de la base de datos en forma de tabla
-    Private Function GetDataTable(query As String, connection As SqlConnection) As DataTable
-        Dim dataTable As New DataTable()
-        Using command As New SqlCommand(query, connection)
-            Dim adapter As New SqlDataAdapter(command)
-            adapter.Fill(dataTable)
-        End Using
-        Return dataTable
-    End Function
+    'Private Function GetDataTable(query As String, connection As SqlConnection) As DataTable
+    '    Dim dataTable As New DataTable()
+    '    Using command As New SqlCommand(query, connection)
+    '        Dim adapter As New SqlDataAdapter(command)
+    '        adapter.Fill(dataTable)
+    '    End Using
+    '    Return dataTable
+    'End Function
 
     Private Sub HandleError(message As String)
         'registro de errores o mostrar un MessageBox
