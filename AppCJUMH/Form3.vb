@@ -2,6 +2,8 @@
 Imports System.Data.SqlClient
 
 Public Class Form3
+    'YM. Definir una sola cadena de conexion para el Form3
+    Private Const ConnectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
     Dim comando As SqlCommand
     Dim connection As SqlConnection
 
@@ -13,57 +15,41 @@ Public Class Form3
         connection = New SqlConnection(connectionString)
 
         Try
-            connection.Open()
-            datos1 = ObtenerDatos1()
-            datos2 = ObtenerDatos2()
-
-            ComboBox3.DisplayMember = "nombre_y_apellidos"
-            ComboBox3.ValueMember = "nombre_y_apellidos"
-            ComboBox3.DataSource = datos1
-
-            ComboBox1.DisplayMember = "procurador_que_delega"
-            ComboBox1.ValueMember = "procurador_que_delega"
-            ComboBox1.DataSource = datos2
-
-            ComboBox3.SelectedIndex = -1
-
-            connection.Close()
+            'YM. Llama r la funcion que Cargara los datos en los combobox 
+            LoadComboBoxData()
         Catch ex As Exception
             MessageBox.Show("Error al cargar los datos: " & ex.Message)
         End Try
     End Sub
-
-    Private Function ObtenerDatos1() As DataTable
-        Dim datos As New DataTable()
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-
-        Using connection As New SqlConnection(connectionString)
+    'YM. Definir una funcion para cargar los datos en los combobox
+    Private Sub LoadComboBoxData()
+        Using connection As New SqlConnection(ConnectionString)
             connection.Open()
-            Dim query As String = "SELECT nombre_y_apellidos FROM usuario"
-            Using command As New SqlCommand(query, connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(datos)
-            End Using
-        End Using
+            ComboBox3.DataSource = GetDataTable("SELECT nombre_y_apellidos FROM usuario", connection)
+            ComboBox3.DisplayMember = "nombre_y_apellidos"
+            ComboBox3.ValueMember = "nombre_y_apellidos"
 
-        Return datos
+            ComboBox1.DataSource = GetDataTable("SELECT procurador_que_delega FROM delegaciones_procuradores", connection)
+            ComboBox1.DisplayMember = "procurador_que_delega"
+            ComboBox1.ValueMember = "procurador_que_delega"
+
+            ComboBox3.SelectedIndex = -1
+        End Using
+    End Sub
+    'YM. La función GetDataTable se ha creado para reutilizar el patrón de obtener datos de la base de datos en forma de tabla
+    Private Function GetDataTable(query As String, connection As SqlConnection) As DataTable
+        Dim dataTable As New DataTable()
+        Using command As New SqlCommand(query, connection)
+            Dim adapter As New SqlDataAdapter(command)
+            adapter.Fill(dataTable)
+        End Using
+        Return dataTable
     End Function
 
-    Private Function ObtenerDatos2() As DataTable
-        Dim datos As New DataTable()
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
-            Dim query As String = "SELECT procurador_que_delega FROM delegaciones_procuradores"
-            Using command As New SqlCommand(query, connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(datos)
-            End Using
-        End Using
-
-        Return datos
-    End Function
+    Private Sub HandleError(message As String)
+        ' Aquí podrías realizar un registro de errores o mostrar un MessageBox
+        MessageBox.Show(message)
+    End Sub
 
     Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
         Dim numeroCelular As String = ""
