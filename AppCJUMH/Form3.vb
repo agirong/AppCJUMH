@@ -3,9 +3,6 @@ Imports System.Data.SqlClient
 
 Public Class Form3
     'YM. Definir una sola cadena de conexion para el Form3
-    Private Const ConnectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-    Dim comando As SqlCommand
-
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try

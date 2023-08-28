@@ -23,7 +23,7 @@ Public Class ConexionDB
             End Using
         End Using
     End Sub
-    'YM. FUNCION del Form3.vb para buscar el numero de celular 
+    'YM. FUNCION del Form3.vb para buscar el numero de celular en funcion del usuario seleccionado. 
     Public Shared Function GetNumeroCelular(nombreApellidos As String) As String
         Dim numeroCelular As String = ""
 
