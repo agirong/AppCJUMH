@@ -1,32 +1,25 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Form2
-    Dim comando As SqlCommand
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
 
         Try
-            Using conexion As New SqlConnection(connectionString)
-                conexion.Open()
+            Dim Parametros As SqlParameter() = {
+                New SqlParameter("@nombre_procurador", txtnombreprocurador.Text),
+                New SqlParameter("@teléfono_procurador", Integer.Parse(txttelefonoprocurador.Text)),
+                New SqlParameter("@número_de_cuenta", Int64.Parse(txtnumerocuenta.Text)),
+                New SqlParameter("@modalidad_institución", ComboBox2.SelectedItem.ToString),
+                New SqlParameter("@nombre_institución", txtinstitucion.Text),
+                New SqlParameter("@teléfono_institución", Integer.Parse(txttelefonoinstitucion.Text)),
+                New SqlParameter("@correo_institución", txtcorreoelectronico.Text),
+                New SqlParameter("@nombre_encargado_del_procurador", txtnombrencargado.Text),
+                New SqlParameter("@teléfono_encargado_del_procurador", Integer.Parse(txttelefonoencargado.Text)),
+                New SqlParameter("@cargo_que_ostenta", txtcargoqueostenta.Text)
+                }
 
-                Dim consulta As String = "INSERT INTO seguimiento_PPS (nombre_procurador, teléfono_procurador, número_de_cuenta, modalidad_institución, nombre_institución, teléfono_institución, correo_institución, nombre_encargado_del_procurador, teléfono_encargado_del_procurador, cargo_que_ostenta) VALUES (@nombre_procurador, @teléfono_procurador, @número_de_cuenta, @modalidad_institución, @nombre_institución, @teléfono_institución, @correo_institución, @nombre_encargado_del_procurador, @teléfono_encargado_del_procurador, @cargo_que_ostenta)"
-
-                comando = New SqlCommand(consulta, conexion)
-                comando.Parameters.AddWithValue("@nombre_procurador", txtnombreprocurador.Text)
-                comando.Parameters.AddWithValue("@teléfono_procurador", Integer.Parse(txttelefonoprocurador.Text))
-                comando.Parameters.AddWithValue("@número_de_cuenta", Int64.Parse(txtnumerocuenta.Text))
-                comando.Parameters.AddWithValue("@modalidad_institución", ComboBox2.SelectedItem.ToString)
-                comando.Parameters.AddWithValue("@nombre_institución", txtinstitucion.Text)
-                comando.Parameters.AddWithValue("@teléfono_institución", Integer.Parse(txttelefonoinstitucion.Text))
-                comando.Parameters.AddWithValue("@correo_institución", txtcorreoelectronico.Text)
-                comando.Parameters.AddWithValue("@nombre_encargado_del_procurador", txtnombrencargado.Text)
-                comando.Parameters.AddWithValue("@teléfono_encargado_del_procurador", Integer.Parse(txttelefonoencargado.Text))
-                comando.Parameters.AddWithValue("@cargo_que_ostenta", txtcargoqueostenta.Text)
-
-                comando.ExecuteNonQuery()
-                MsgBox("Datos guardados correctamente")
-            End Using
+            Dim consulta As String = "INSERT INTO seguimiento_PPS (nombre_procurador, teléfono_procurador, número_de_cuenta, modalidad_institución, nombre_institución, teléfono_institución, correo_institución, nombre_encargado_del_procurador, teléfono_encargado_del_procurador, cargo_que_ostenta) VALUES (@nombre_procurador, @teléfono_procurador, @número_de_cuenta, @modalidad_institución, @nombre_institución, @teléfono_institución, @correo_institución, @nombre_encargado_del_procurador, @teléfono_encargado_del_procurador, @cargo_que_ostenta)"
+            ConexionDB.InsertData(consulta, Parametros)
+            MsgBox("Datos guardados correctamente")
         Catch ex As Exception
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
         End Try
