@@ -3,9 +3,6 @@ Imports System.Data.SqlClient
 
 Public Class Form3
     'YM. Definir una sola cadena de conexion para el Form3
-    Private Const ConnectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-    Dim comando As SqlCommand
-
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
@@ -17,84 +14,42 @@ Public Class Form3
     End Sub
     'YM. Definir una funcion para cargar los datos en los combobox
     Private Sub LoadComboBoxData()
-        Using connection As New SqlConnection(ConnectionString)
-            connection.Open()
-            ComboBox3.DataSource = GetDataTable("SELECT nombre_y_apellidos FROM usuario", connection)
+        Try
+            ComboBox3.DataSource = ConexionDB.GetDataTable("SELECT nombre_y_apellidos FROM usuario")
             ComboBox3.DisplayMember = "nombre_y_apellidos"
             ComboBox3.ValueMember = "nombre_y_apellidos"
 
-            ComboBox1.DataSource = GetDataTable("SELECT procurador_que_delega FROM delegaciones_procuradores", connection)
+            ComboBox1.DataSource = ConexionDB.GetDataTable("SELECT procurador_que_delega FROM delegaciones_procuradores")
             ComboBox1.DisplayMember = "procurador_que_delega"
             ComboBox1.ValueMember = "procurador_que_delega"
 
             ComboBox3.SelectedIndex = -1
-        End Using
-    End Sub
-    'YM. La función GetDataTable se ha creado para reutilizar el patrón de obtener datos de la base de datos en forma de tabla
-    Private Function GetDataTable(query As String, connection As SqlConnection) As DataTable
-        Dim dataTable As New DataTable()
-        Using command As New SqlCommand(query, connection)
-            Dim adapter As New SqlDataAdapter(command)
-            adapter.Fill(dataTable)
-        End Using
-        Return dataTable
-    End Function
-
-    Private Sub HandleError(message As String)
-        'registro de errores o mostrar un MessageBox
-        MessageBox.Show(message)
-    End Sub
-    'Ym. Mejorar la funcion de obtener el Numero de Celular.
-    Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
-
-        Dim numeroCelular As String = ""
-
-        Try
-            Using connection As New SqlConnection(ConnectionString)
-                connection.Open()
-
-                Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
-                Using command As New SqlCommand(query, connection)
-                    command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
-                    Dim reader As SqlDataReader = command.ExecuteReader()
-
-                    If reader.Read() Then
-                        numeroCelular = reader("telefono_movil").ToString()
-                    End If
-
-                    reader.Close()
-                End Using
-            End Using
         Catch ex As Exception
-            MessageBox.Show("Error al obtener el número de celular: " & ex.Message)
+            MessageBox.Show("Error al cargar los datos: " & ex.Message)
         End Try
-
-        Return numeroCelular
-    End Function
+    End Sub
     'YM. Mejorar la conexión del metodó guardar.
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
-            Using conexion As New SqlConnection(ConnectionString)
-                conexion.Open()
+            Dim parametros As SqlParameter() = {
+                New SqlParameter("@procurador_que_delega", ComboBox1.SelectedValue.ToString),
+                New SqlParameter("@número_expediente", Int64.Parse(txtnumeroexpediente.Text)),
+                New SqlParameter("@numero_juez", txtnumerojuez.Text),
+                New SqlParameter("@caso", txtcaso.Text),
+                New SqlParameter("@materia", ComboBox2.SelectedItem.ToString),
+                New SqlParameter("@usuario", ComboBox3.SelectedValue.ToString),
+                New SqlParameter("@teléfono_usuario", Integer.Parse(txttelefono.Text)),
+                New SqlParameter("@estado_actual", txtestadoactual.Text),
+                New SqlParameter("@observación", txtobservacion.Text),
+                New SqlParameter("@nuevo_iniciado", If(rbtnnuevo.Checked, "Nuevo", "Iniciado")),
+                New SqlParameter("@nuevo_procurador", txtnuevoprocurador.Text)
+            }
 
-                Dim consulta As String = "INSERT INTO delegaciones_procuradores (procurador_que_delega, número_expediente, numero_juez, caso, materia, usuario, teléfono_usuario, estado_actual, observación, nuevo_iniciado, nuevo_procurador) VALUES (@procurador_que_delega, @número_expediente, @numero_juez, @caso, @materia, @usuario, @teléfono_usuario, @estado_actual, @observación, @nuevo_iniciado, @nuevo_procurador)"
+            Dim consulta As String = "INSERT INTO delegaciones_procuradores (procurador_que_delega, número_expediente, numero_juez, caso, materia, usuario, teléfono_usuario, estado_actual, observación, nuevo_iniciado, nuevo_procurador) VALUES (@procurador_que_delega, @número_expediente, @numero_juez, @caso, @materia, @usuario, @teléfono_usuario, @estado_actual, @observación, @nuevo_iniciado, @nuevo_procurador)"
+            ConexionDB.InsertData(consulta, parametros)
 
-                comando = New SqlCommand(consulta, conexion)
-                comando.Parameters.AddWithValue("@procurador_que_delega", ComboBox1.SelectedValue.ToString)
-                comando.Parameters.AddWithValue("@número_expediente", Int64.Parse(txtnumeroexpediente.Text))
-                comando.Parameters.AddWithValue("@numero_juez", txtnumerojuez.Text)
-                comando.Parameters.AddWithValue("@caso", txtcaso.Text)
-                comando.Parameters.AddWithValue("@materia", ComboBox2.SelectedItem.ToString)
-                comando.Parameters.AddWithValue("@usuario", ComboBox3.SelectedValue.ToString)
-                comando.Parameters.AddWithValue("@teléfono_usuario", Integer.Parse(txttelefono.Text))
-                comando.Parameters.AddWithValue("@estado_actual", txtestadoactual.Text)
-                comando.Parameters.AddWithValue("@observación", txtobservacion.Text)
-                comando.Parameters.AddWithValue("@nuevo_iniciado", If(rbtnnuevo.Checked, "Nuevo", "Iniciado"))
-                comando.Parameters.AddWithValue("@nuevo_procurador", txtnuevoprocurador.Text)
+            MsgBox("Datos guardados correctamente")
 
-                comando.ExecuteNonQuery()
-                MsgBox("Datos guardados correctamente")
-            End Using
         Catch ex As Exception
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
         End Try
@@ -123,7 +78,7 @@ Public Class Form3
         Try
             If ComboBox3.SelectedIndex <> -1 Then
                 Dim selectedNombreApellidos As String = ComboBox3.SelectedValue.ToString()
-                Dim numeroCelular As String = ObtenerNumeroCelular(selectedNombreApellidos)
+                Dim numeroCelular As String = ConexionDB.GetNumeroCelular(selectedNombreApellidos)
                 txttelefono.Text = numeroCelular
             End If
         Catch ex As Exception
