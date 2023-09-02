@@ -49,4 +49,32 @@ Public Class ConexionDB
 
         Return numeroCelular
     End Function
+
+    'YM. FUNCION PARA OBTENER CORREO
+    Public Shared Function GetCorreo(nombreApellidos As String) As String
+        Dim correoElectronico As String = ""
+
+        Try
+            Using connection As New SqlConnection(ConnectionString)
+                connection.Open()
+
+                Dim query As String = "SELECT correo_electronico FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
+                Using command As New SqlCommand(query, connection)
+                    command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
+                    Dim reader As SqlDataReader = command.ExecuteReader()
+
+                    If reader.Read() Then
+                        correoElectronico = reader("correo_electronico").ToString()
+                    End If
+
+                    reader.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Manejo de errores aquí
+        End Try
+
+        Return correoElectronico
+    End Function
+
 End Class
