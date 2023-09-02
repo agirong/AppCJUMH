@@ -9,10 +9,6 @@ Public Class Form1
         Dim horaActual As New DateTime(DateTime.Now.TimeOfDay.Ticks)
         txthora.Text = horaActual
 
-
-        Dim conexion As New SqlClient.SqlConnection
-        conexion.ConnectionString = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-        conexion.Open()
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs)
