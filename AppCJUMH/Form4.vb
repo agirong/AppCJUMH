@@ -1,106 +1,51 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Form4
-    Dim comando As SqlCommand
-    Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-    Dim connection As New SqlConnection(connectionString)
-
-    Private Function ObtenerDatos1() As DataTable
-        Dim datos As New DataTable()
-
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
-            Dim query As String = "SELECT nombre_y_apellidos FROM usuario"
-            Using command As New SqlCommand(query, connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(datos)
-            End Using
-        End Using
-
-        Return datos
-    End Function
-
-    Private Function ObtenerDatos2() As DataTable
-        Dim datos As New DataTable()
-
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
-            Dim query As String = "SELECT nombre_procurador FROM casos"
-            Using command As New SqlCommand(query, connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(datos)
-            End Using
-        End Using
-
-        Return datos
-    End Function
-
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            connection.Open()
-
-            Dim datos1 As DataTable = ObtenerDatos1()
-            Dim datos2 As DataTable = ObtenerDatos2()
-
-            ComboBox3.DisplayMember = "nombre_y_apellidos"
-            ComboBox3.ValueMember = "nombre_y_apellidos"
-            ComboBox3.DataSource = datos1
-
-            ComboBox2.DisplayMember = "nombre_procurador"
-            ComboBox2.ValueMember = "nombre_procurador"
-            ComboBox2.DataSource = datos2
+            LoadComboBoxData()
         Catch ex As Exception
             MessageBox.Show("Error al cargar los datos: " & ex.Message)
-        Finally
-            connection.Close()
+        End Try
+    End Sub
+    'YM: Crear un metodo nuevo para cargar la data a los combobox 
+    Private Sub LoadComboBoxData()
+        Try
+            ComboBox3.DataSource = ConexionDB.GetDataTable("SELECT nombre_y_apellidos FROM usuario")
+            ComboBox3.DisplayMember = "nombre_y_apellidos"
+            ComboBox3.ValueMember = "nombre_y_apellidos"
+
+            ComboBox2.DataSource = ConexionDB.GetDataTable("SELECT nombre_procurador FROM casos")
+            ComboBox2.DisplayMember = "nombre_procurador"
+            ComboBox2.ValueMember = "nombre_procurador"
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar los datos: " & ex.Message)
         End Try
     End Sub
 
-    Private Function ObtenerNumeroCelular(ByVal nombreApellidos As String) As String
-        Dim numeroCelular As String = ""
-
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
-            Dim query As String = "SELECT telefono_movil FROM usuario WHERE nombre_y_apellidos = @NombreApellidos"
-            Using command As New SqlCommand(query, connection)
-                command.Parameters.AddWithValue("@NombreApellidos", nombreApellidos)
-
-                Dim reader As SqlDataReader = command.ExecuteReader()
-                If reader.Read() Then
-                    numeroCelular = reader("telefono_movil").ToString()
-                End If
-
-                reader.Close()
-            End Using
-        End Using
-
-        Return numeroCelular
-    End Function
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
-            connection.Open()
-
+            'Ym:         Hacer el insert usando la clase ConexionDB
+            Dim parametros As SqlParameter() = {
+            New SqlParameter("@número_expediente", Int64.Parse(txtnumeroexpediente.Text)),
+            New SqlParameter("@materia", ComboBox1.SelectedItem.ToString),
+            New SqlParameter("@procurador_asignado", ComboBox2.SelectedValue.ToString),
+            New SqlParameter("@carnet", Integer.Parse(txtcarnet.Text)),
+            New SqlParameter("@cuenta_institucional", Int64.Parse(txtcuenta.Text)),
+            New SqlParameter("@teléfono_procurador", Integer.Parse(txttelefonoprocurador.Text)),
+            New SqlParameter("@nombre_usuario", ComboBox3.SelectedValue.ToString),
+            New SqlParameter("@teléfono_usuario", Integer.Parse(txttelefonousuario.Text)),
+            New SqlParameter("@observación", txtobservacion.Text),
+            New SqlParameter("@fecha_audiencia", txtfechaaudiencia.Text)
+            }
             Dim consulta As String = "INSERT INTO audiencias_vigentes (número_expediente, materia, procurador_asignado, carnet, cuenta_institucional, teléfono_procurador, nombre_usuario, teléfono_usuario, observación, fecha_audiencia) VALUES (@número_expediente, @materia, @procurador_asignado, @carnet, @cuenta_institucional, @teléfono_procurador, @nombre_usuario, @teléfono_usuario, @observación, @fecha_audiencia)"
+            ConexionDB.InsertData(consulta, parametros)
 
-            comando = New SqlCommand(consulta, connection)
-            comando.Parameters.AddWithValue("@número_expediente", Int64.Parse(txtnumeroexpediente.Text))
-            comando.Parameters.AddWithValue("@materia", ComboBox1.SelectedItem.ToString)
-            comando.Parameters.AddWithValue("@procurador_asignado", ComboBox2.SelectedValue.ToString)
-            comando.Parameters.AddWithValue("@carnet", Integer.Parse(txtcarnet.Text))
-            comando.Parameters.AddWithValue("@cuenta_institucional", Int64.Parse(txtcuenta.Text))
-            comando.Parameters.AddWithValue("@teléfono_procurador", Integer.Parse(txttelefonoprocurador.Text))
-            comando.Parameters.AddWithValue("@nombre_usuario", ComboBox3.SelectedValue.ToString)
-            comando.Parameters.AddWithValue("@teléfono_usuario", Integer.Parse(txttelefonousuario.Text))
-            comando.Parameters.AddWithValue("@observación", txtobservacion.Text)
-            comando.Parameters.AddWithValue("@fecha_audiencia", txtfechaaudiencia.Text)
-
-            comando.ExecuteNonQuery()
             MsgBox("Datos guardados correctamente")
         Catch ex As Exception
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
-        Finally
-            connection.Close()
         End Try
     End Sub
 
@@ -116,7 +61,7 @@ Public Class Form4
 
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
         Dim selectedNombreApellidos As String = ComboBox3.SelectedValue.ToString()
-        Dim numeroCelular As String = ObtenerNumeroCelular(selectedNombreApellidos)
+        Dim numeroCelular As String = ConexionDB.GetNumeroCelular(selectedNombreApellidos)
         txttelefonousuario.Text = numeroCelular
     End Sub
 
