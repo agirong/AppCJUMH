@@ -28,6 +28,8 @@ Partial Class frmPrincipal
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.BotonUsuarios = New System.Windows.Forms.Button()
+        Me.BotonRoles = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -85,11 +87,31 @@ Partial Class frmPrincipal
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Formulario Principal"
         '
+        'BotonUsuarios
+        '
+        Me.BotonUsuarios.Location = New System.Drawing.Point(679, 29)
+        Me.BotonUsuarios.Name = "BotonUsuarios"
+        Me.BotonUsuarios.Size = New System.Drawing.Size(94, 29)
+        Me.BotonUsuarios.TabIndex = 6
+        Me.BotonUsuarios.Text = "Usuarios"
+        Me.BotonUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonRoles
+        '
+        Me.BotonRoles.Location = New System.Drawing.Point(679, 78)
+        Me.BotonRoles.Name = "BotonRoles"
+        Me.BotonRoles.Size = New System.Drawing.Size(94, 29)
+        Me.BotonRoles.TabIndex = 7
+        Me.BotonRoles.Text = "Roles"
+        Me.BotonRoles.UseVisualStyleBackColor = True
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.BotonRoles)
+        Me.Controls.Add(Me.BotonUsuarios)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -109,4 +131,6 @@ Partial Class frmPrincipal
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents BotonUsuarios As Button
+    Friend WithEvents BotonRoles As Button
 End Class
