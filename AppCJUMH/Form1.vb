@@ -135,66 +135,6 @@ Public Class Form1
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
         End Try
 
-        'Dim conexion As New SqlClient.SqlConnection
-        'conexion.ConnectionString = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-        'conexion.Open()
-
-        'Dim selectedDate As DateTime = DateTimePicker1.Value
-        'Dim metodoServicio As String = ComboBox1.SelectedValue.ToString()
-        'Dim medioServicio As String = ComboBox2.SelectedItem.ToString()
-        'Dim additionalValue As String = txtotro.Text
-        'Dim consulta As String = "INSERT INTO casos (nombre_director, nombre_procurador, fecha, hora, metodo_servicio, medio_servicio, documentación_recibida, hechos_del_caso, ciudad) VALUES (@nombre_director, @nombre_procurador, @fecha, @hora, @metodo_servicio, @medio_servicio, @documentación_recibida, @hechos_del_caso, @ciudad)"
-
-        'comando = New SqlCommand(consulta, conexion)
-        'comando.Parameters.AddWithValue("@nombre_director", txtdirector.Text)
-        'comando.Parameters.AddWithValue("@nombre_procurador", txtprocurador.Text)
-        'comando.Parameters.AddWithValue("@fecha", DateTimePicker1.Value.Date)
-        'comando.Parameters.AddWithValue("@hora", txthora.Text)
-        'comando.Parameters.AddWithValue("@metodo_servicio", ComboBox1.SelectedItem.ToString)
-        'comando.Parameters.AddWithValue("@documentación_recibida", txtdocureci.Text)
-        'comando.Parameters.AddWithValue("@hechos_del_caso", txthechos.Text)
-        'comando.Parameters.AddWithValue("@ciudad", ComboBox5.SelectedItem.ToString)
-
-        'If Len(Trim(txtotro.Text)) = 0 Then
-        '    comando.Parameters.AddWithValue("@medio_servicio", ComboBox2.SelectedItem.ToString)
-        'Else
-        '    comando.Parameters.AddWithValue("@medio_servicio", txtotro.Text)
-        'End If
-
-        'comando.Parameters.AddWithValue("@medio_servicio", If(selectedValue = "Otro", additionalValue, selectedValue1))
-        'comando.ExecuteNonQuery()
-
-        'Dim consulta1 As String = "INSERT INTO usuario (genero, nombre_y_apellidos, profesion, telefono_fijo, telefono_movil, nombre_y_telefono_de_alguien_de_confianza, correo_electronico, tipo_documentacion, DNI, nacionalidad, domicilio, lugar_nacimiento, fecha_nacimiento, edad, etnia, estado_civil, sabe_leer, sabe_escribir, escolaridad, trabaja, profesion_u_oficio, lugar_de_trabajo) " &
-        '                     "VALUES (@genero, @nombre_y_apellidos, @profesion, @telefono_fijo, @telefono_movil, @nombre_y_telefono_de_alguien_de_confianza, @correo_electronico, @tipo_documentacion, @DNI, @nacionalidad, @domicilio, @lugar_nacimiento, @fecha_nacimiento, @edad, @etnia, @estado_civil, @sabe_leer, @sabe_escribir, @escolaridad, @trabaja, @profesion_u_oficio, @lugar_de_trabajo)"
-
-        'comando = New SqlCommand(consulta1, conexion)
-        'comando.Parameters.AddWithValue("@genero", ComboBox2.SelectedItem.ToString())
-        'comando.Parameters.AddWithValue("@nombre_y_apellidos", txtnombreuser.Text)
-        'comando.Parameters.AddWithValue("@profesion", txtprofesion.Text)
-        'comando.Parameters.AddWithValue("@telefono_fijo", Integer.Parse(txtfijo.Text))
-        'comando.Parameters.AddWithValue("@telefono_movil", Integer.Parse(txtmovil.Text))
-        'comando.Parameters.AddWithValue("@nombre_y_telefono_de_alguien_de_confianza", txtnombreytelefonoconfianza.Text)
-        'comando.Parameters.AddWithValue("@correo_electronico", txtcorreo.Text)
-        'comando.Parameters.AddWithValue("@tipo_documentacion", txtdocumentacion.Text)
-        'comando.Parameters.AddWithValue("@DNI", Int64.Parse(txtidentidad.Text))
-        'comando.Parameters.AddWithValue("@nacionalidad", txtnacionalidad.Text)
-        'comando.Parameters.AddWithValue("@domicilio", txtdomicilio.Text)
-        'comando.Parameters.AddWithValue("@lugar_nacimiento", txtlugarnaci.Text)
-        'comando.Parameters.AddWithValue("@fecha_nacimiento", DateTimePicker2.Value.ToString("yyyy-MM-dd"))
-        'comando.Parameters.AddWithValue("@edad", Integer.Parse(txtedad.Text))
-        'comando.Parameters.AddWithValue("@etnia", txtetnia.Text)
-        'comando.Parameters.AddWithValue("@estado_civil", ComboBox4.SelectedItem.ToString())
-        'comando.Parameters.AddWithValue("@sabe_leer", If(rbtnsi0.Checked, "Si", "No"))
-        'comando.Parameters.AddWithValue("@sabe_escribir", If(rbtnsi1.Checked, "Si", "No"))
-        'comando.Parameters.AddWithValue("@escolaridad", txtescolaridad.Text)
-        'comando.Parameters.AddWithValue("@trabaja", If(RadioButton1.Checked, "Si", "No"))
-        'comando.Parameters.AddWithValue("@profesion_u_oficio", txtprofesion.Text)
-        'comando.Parameters.AddWithValue("@lugar_de_trabajo", txtlugartrabajo.Text)
-
-        'comando.ExecuteNonQuery()
-        'MessageBox.Show("Datos guardados en la base de datos")
-        'conexion.Close()
-
     End Sub
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
