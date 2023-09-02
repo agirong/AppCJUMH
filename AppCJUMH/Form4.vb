@@ -1,40 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Form4
-    Dim comando As SqlCommand
-    Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-    Dim connection As New SqlConnection(connectionString)
-
-    'Private Function ObtenerDatos1() As DataTable
-    '    Dim datos As New DataTable()
-
-    '    Using connection As New SqlConnection(connectionString)
-    '        connection.Open()
-    '        Dim query As String = "SELECT nombre_y_apellidos FROM usuario"
-    '        Using command As New SqlCommand(query, connection)
-    '            Dim adapter As New SqlDataAdapter(command)
-    '            adapter.Fill(datos)
-    '        End Using
-    '    End Using
-
-    '    Return datos
-    'End Function
-
-    'Private Function ObtenerDatos2() As DataTable
-    '    Dim datos As New DataTable()
-
-    '    Using connection As New SqlConnection(connectionString)
-    '        connection.Open()
-    '        Dim query As String = "SELECT nombre_procurador FROM casos"
-    '        Using command As New SqlCommand(query, connection)
-    '            Dim adapter As New SqlDataAdapter(command)
-    '            adapter.Fill(datos)
-    '        End Using
-    '    End Using
-
-    '    Return datos
-    'End Function
-
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             LoadComboBoxData()
@@ -61,8 +27,7 @@ Public Class Form4
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         Try
-
-            'connection.Open()
+            'Ym:         Hacer el insert usando la clase ConexionDB
             Dim parametros As SqlParameter() = {
             New SqlParameter("@número_expediente", Int64.Parse(txtnumeroexpediente.Text)),
             New SqlParameter("@materia", ComboBox1.SelectedItem.ToString),
@@ -81,8 +46,6 @@ Public Class Form4
             MsgBox("Datos guardados correctamente")
         Catch ex As Exception
             MessageBox.Show("Error al guardar los datos: " & ex.Message)
-        Finally
-            connection.Close()
         End Try
     End Sub
 
