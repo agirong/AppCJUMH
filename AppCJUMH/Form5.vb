@@ -1,14 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Form5
-    Dim comando As SqlCommand
-    Dim connection As SqlConnection
-
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '' Establecer la conexión con la base de datos
-        Dim connectionString As String = "Data Source=.;Initial Catalog=CJUMH;Integrated Security=True"
-        connection = New SqlConnection(connectionString)
-
         LoadComboBoxData()
     End Sub
 
