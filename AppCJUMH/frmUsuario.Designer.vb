@@ -29,15 +29,16 @@ Partial Class frmUsuario
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtNombres = New System.Windows.Forms.TextBox()
+        Me.txtApellidos = New System.Windows.Forms.TextBox()
+        Me.txtDNI = New System.Windows.Forms.TextBox()
+        Me.txtCorreo = New System.Windows.Forms.TextBox()
+        Me.txtUser = New System.Windows.Forms.TextBox()
+        Me.txtContrasena = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cbRol = New System.Windows.Forms.ComboBox()
         Me.Salir = New System.Windows.Forms.Button()
+        Me.Guardar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Usuarios
@@ -103,47 +104,47 @@ Partial Class frmUsuario
         Me.Label6.TabIndex = 6
         Me.Label6.Text = "Email: "
         '
-        'TextBox1
+        'txtNombres
         '
-        Me.TextBox1.Location = New System.Drawing.Point(155, 89)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox1.TabIndex = 7
+        Me.txtNombres.Location = New System.Drawing.Point(155, 89)
+        Me.txtNombres.Name = "txtNombres"
+        Me.txtNombres.Size = New System.Drawing.Size(215, 27)
+        Me.txtNombres.TabIndex = 7
         '
-        'TextBox2
+        'txtApellidos
         '
-        Me.TextBox2.Location = New System.Drawing.Point(543, 89)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(194, 27)
-        Me.TextBox2.TabIndex = 8
+        Me.txtApellidos.Location = New System.Drawing.Point(543, 89)
+        Me.txtApellidos.Name = "txtApellidos"
+        Me.txtApellidos.Size = New System.Drawing.Size(194, 27)
+        Me.txtApellidos.TabIndex = 8
         '
-        'TextBox3
+        'txtDNI
         '
-        Me.TextBox3.Location = New System.Drawing.Point(155, 137)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox3.TabIndex = 9
+        Me.txtDNI.Location = New System.Drawing.Point(155, 137)
+        Me.txtDNI.Name = "txtDNI"
+        Me.txtDNI.Size = New System.Drawing.Size(215, 27)
+        Me.txtDNI.TabIndex = 9
         '
-        'TextBox4
+        'txtCorreo
         '
-        Me.TextBox4.Location = New System.Drawing.Point(543, 137)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(194, 27)
-        Me.TextBox4.TabIndex = 10
+        Me.txtCorreo.Location = New System.Drawing.Point(543, 137)
+        Me.txtCorreo.Name = "txtCorreo"
+        Me.txtCorreo.Size = New System.Drawing.Size(194, 27)
+        Me.txtCorreo.TabIndex = 10
         '
-        'TextBox5
+        'txtUser
         '
-        Me.TextBox5.Location = New System.Drawing.Point(155, 185)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox5.TabIndex = 11
+        Me.txtUser.Location = New System.Drawing.Point(155, 185)
+        Me.txtUser.Name = "txtUser"
+        Me.txtUser.Size = New System.Drawing.Size(215, 27)
+        Me.txtUser.TabIndex = 11
         '
-        'TextBox6
+        'txtContrasena
         '
-        Me.TextBox6.Location = New System.Drawing.Point(543, 185)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(194, 27)
-        Me.TextBox6.TabIndex = 12
+        Me.txtContrasena.Location = New System.Drawing.Point(543, 185)
+        Me.txtContrasena.Name = "txtContrasena"
+        Me.txtContrasena.Size = New System.Drawing.Size(194, 27)
+        Me.txtContrasena.TabIndex = 12
         '
         'Label7
         '
@@ -154,13 +155,13 @@ Partial Class frmUsuario
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Rol: "
         '
-        'ComboBox1
+        'cbRol
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(155, 229)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(215, 28)
-        Me.ComboBox1.TabIndex = 14
+        Me.cbRol.FormattingEnabled = True
+        Me.cbRol.Location = New System.Drawing.Point(155, 229)
+        Me.cbRol.Name = "cbRol"
+        Me.cbRol.Size = New System.Drawing.Size(215, 28)
+        Me.cbRol.TabIndex = 14
         '
         'Salir
         '
@@ -171,20 +172,30 @@ Partial Class frmUsuario
         Me.Salir.Text = "Salir"
         Me.Salir.UseVisualStyleBackColor = True
         '
+        'Guardar
+        '
+        Me.Guardar.Location = New System.Drawing.Point(543, 218)
+        Me.Guardar.Name = "Guardar"
+        Me.Guardar.Size = New System.Drawing.Size(194, 39)
+        Me.Guardar.TabIndex = 16
+        Me.Guardar.Text = "Guardar"
+        Me.Guardar.UseVisualStyleBackColor = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(859, 561)
+        Me.Controls.Add(Me.Guardar)
         Me.Controls.Add(Me.Salir)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.cbRol)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtContrasena)
+        Me.Controls.Add(Me.txtUser)
+        Me.Controls.Add(Me.txtCorreo)
+        Me.Controls.Add(Me.txtDNI)
+        Me.Controls.Add(Me.txtApellidos)
+        Me.Controls.Add(Me.txtNombres)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -206,13 +217,14 @@ Partial Class frmUsuario
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents txtNombres As TextBox
+    Friend WithEvents txtApellidos As TextBox
+    Friend WithEvents txtDNI As TextBox
+    Friend WithEvents txtCorreo As TextBox
+    Friend WithEvents txtUser As TextBox
+    Friend WithEvents txtContrasena As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cbRol As ComboBox
     Friend WithEvents Salir As Button
+    Friend WithEvents Guardar As Button
 End Class
