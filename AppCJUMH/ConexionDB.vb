@@ -110,4 +110,44 @@ Public Class ConexionDB
             End Using
         End Using
     End Sub
+
+    'YM: Hacer una funcion que permita autenticar al usuario. La funcion develve True o False
+    'True: Hay un usuario con user_umh y contrasena que coincide.
+    'False: No hay un usuario que coincida.
+    Public Shared Function AutenticarUsuario(pUsuario As String, pContrasena As String) As Boolean
+        Dim existeUsuario = False
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim dataTable As New DataTable()
+            Dim consulta As String = "SELECT COUNT (*) FROM usuarios_umh WHERE user_umh = @user_umh AND contrasena =@contrasena"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@user_umh", pUsuario)
+                command.Parameters.AddWithValue("@contrasena", pContrasena)
+                ' Utilizar ExecuteScalar para obtener el valor de recuento
+                Dim recuento As Integer = CInt(command.ExecuteScalar())
+
+                ' Si el recuento es mayor que cero, significa que el usuario existe
+                If recuento > 0 Then
+                    existeUsuario = True
+                End If
+
+            End Using
+            Return existeUsuario
+        End Using
+    End Function
+
+    'YM: Obtener los permisos especificos de un usuario en funcion de los permisos del rol que tiene asignado
+    Public Shared Function GetDataTablePermisosUsuario(puser As String) As DataTable
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim dataTable As New DataTable()
+            Dim consulta As String = "SELECT user_umh, B.* FROM usuarios_umh A INNER JOIN roles B ON A.id_rol = B.id WHERE A.user_umh = @user_umh"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@user_umh", puser) ' Pasar el valor del parámetro "id"
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dataTable)
+            End Using
+            Return dataTable
+        End Using
+    End Function
 End Class

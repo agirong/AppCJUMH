@@ -22,60 +22,61 @@ Partial Class frmPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnFicha = New System.Windows.Forms.Button()
+        Me.btnSeguimiento = New System.Windows.Forms.Button()
+        Me.btnDelegacion = New System.Windows.Forms.Button()
+        Me.btnAudiencias = New System.Windows.Forms.Button()
+        Me.btnCasosPPS = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BotonUsuarios = New System.Windows.Forms.Button()
         Me.BotonRoles = New System.Windows.Forms.Button()
+        Me.lbUsuarioActual = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnFicha
         '
-        Me.Button1.Location = New System.Drawing.Point(108, 228)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(94, 29)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Form1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnFicha.Location = New System.Drawing.Point(108, 228)
+        Me.btnFicha.Name = "btnFicha"
+        Me.btnFicha.Size = New System.Drawing.Size(94, 29)
+        Me.btnFicha.TabIndex = 0
+        Me.btnFicha.Text = "Ficha"
+        Me.btnFicha.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnSeguimiento
         '
-        Me.Button2.Location = New System.Drawing.Point(225, 228)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(94, 29)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "From2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnSeguimiento.Location = New System.Drawing.Point(225, 228)
+        Me.btnSeguimiento.Name = "btnSeguimiento"
+        Me.btnSeguimiento.Size = New System.Drawing.Size(94, 29)
+        Me.btnSeguimiento.TabIndex = 1
+        Me.btnSeguimiento.Text = "Seguimiento PPS"
+        Me.btnSeguimiento.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnDelegacion
         '
-        Me.Button3.Location = New System.Drawing.Point(343, 228)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(94, 29)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Form3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnDelegacion.Location = New System.Drawing.Point(343, 228)
+        Me.btnDelegacion.Name = "btnDelegacion"
+        Me.btnDelegacion.Size = New System.Drawing.Size(94, 29)
+        Me.btnDelegacion.TabIndex = 2
+        Me.btnDelegacion.Text = "Delegaciones"
+        Me.btnDelegacion.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnAudiencias
         '
-        Me.Button4.Location = New System.Drawing.Point(462, 228)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(94, 29)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "Form4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnAudiencias.Location = New System.Drawing.Point(462, 228)
+        Me.btnAudiencias.Name = "btnAudiencias"
+        Me.btnAudiencias.Size = New System.Drawing.Size(94, 29)
+        Me.btnAudiencias.TabIndex = 3
+        Me.btnAudiencias.Text = "Audiencias"
+        Me.btnAudiencias.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnCasosPPS
         '
-        Me.Button5.Location = New System.Drawing.Point(591, 228)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(94, 29)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Form5"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnCasosPPS.Location = New System.Drawing.Point(591, 228)
+        Me.btnCasosPPS.Name = "btnCasosPPS"
+        Me.btnCasosPPS.Size = New System.Drawing.Size(94, 29)
+        Me.btnCasosPPS.TabIndex = 4
+        Me.btnCasosPPS.Text = "Casos PPS"
+        Me.btnCasosPPS.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -105,19 +106,29 @@ Partial Class frmPrincipal
         Me.BotonRoles.Text = "Roles"
         Me.BotonRoles.UseVisualStyleBackColor = True
         '
+        'lbUsuarioActual
+        '
+        Me.lbUsuarioActual.AutoSize = True
+        Me.lbUsuarioActual.Location = New System.Drawing.Point(98, 33)
+        Me.lbUsuarioActual.Name = "lbUsuarioActual"
+        Me.lbUsuarioActual.Size = New System.Drawing.Size(53, 20)
+        Me.lbUsuarioActual.TabIndex = 8
+        Me.lbUsuarioActual.Text = "Label2"
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.lbUsuarioActual)
         Me.Controls.Add(Me.BotonRoles)
         Me.Controls.Add(Me.BotonUsuarios)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnCasosPPS)
+        Me.Controls.Add(Me.btnAudiencias)
+        Me.Controls.Add(Me.btnDelegacion)
+        Me.Controls.Add(Me.btnSeguimiento)
+        Me.Controls.Add(Me.btnFicha)
         Me.Name = "frmPrincipal"
         Me.Text = "frmPrincipal"
         Me.ResumeLayout(False)
@@ -125,12 +136,13 @@ Partial Class frmPrincipal
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents btnFicha As Button
+    Friend WithEvents btnSeguimiento As Button
+    Friend WithEvents btnDelegacion As Button
+    Friend WithEvents btnAudiencias As Button
+    Friend WithEvents btnCasosPPS As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents BotonUsuarios As Button
     Friend WithEvents BotonRoles As Button
+    Friend WithEvents lbUsuarioActual As Label
 End Class
