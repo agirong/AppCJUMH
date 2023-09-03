@@ -110,4 +110,27 @@ Public Class ConexionDB
             End Using
         End Using
     End Sub
+
+    'YM: Hacer una funcion que permita autenticar al usuario. 
+    Public Shared Function AutenticarUsuario(pUsuario As String, pContrasena As String) As Boolean
+        Dim existeUsuario = False
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim dataTable As New DataTable()
+            Dim consulta As String = "SELECT COUNT (*) FROM usuarios_umh WHERE user_umh = @user_umh AND contrasena =@contrasena"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@user_umh", pUsuario)
+                command.Parameters.AddWithValue("@contrasena", pContrasena)
+                ' Utilizar ExecuteScalar para obtener el valor de recuento
+                Dim recuento As Integer = CInt(command.ExecuteScalar())
+
+                ' Si el recuento es mayor que cero, significa que el usuario existe
+                If recuento > 0 Then
+                    existeUsuario = True
+                End If
+
+            End Using
+            Return existeUsuario
+        End Using
+    End Function
 End Class
