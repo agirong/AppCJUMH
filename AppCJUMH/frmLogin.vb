@@ -18,7 +18,7 @@
                     'YM. El usuario ha sido autenticado correctamente, le mostramos un mensaje de exito y le mostramos el menu. 
 
                     'Guardar el usuario que ingereso al sistema. 
-                    UsuarioActual.usuarioLogin = txtUsuarioLogin.Text
+                    UsuarioActual.usuarioLogin = txtUsuarioLogin.Text 'ymeza
                     'YM.Mandar un mensaje de que se valido el ingreso 
                     MessageBox.Show("Inicio de sesión exitoso")
                     Dim formularioPrincipal As New frmPrincipal()

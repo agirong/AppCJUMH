@@ -135,4 +135,19 @@ Public Class ConexionDB
             Return existeUsuario
         End Using
     End Function
+
+    'YM: Obtener los permisos especificos de un usuario en funcion de los permisos del rol que tiene asignado
+    Public Shared Function GetDataTablePermisosUsuario(puser As String) As DataTable
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim dataTable As New DataTable()
+            Dim consulta As String = "SELECT user_umh, B.* FROM usuarios_umh A INNER JOIN roles B ON A.id_rol = B.id WHERE A.user_umh = @user_umh"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@user_umh", puser) ' Pasar el valor del parámetro "id"
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dataTable)
+            End Using
+            Return dataTable
+        End Using
+    End Function
 End Class
