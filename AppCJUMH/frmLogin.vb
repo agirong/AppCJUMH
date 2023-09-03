@@ -16,6 +16,8 @@
 
                 If (autenticado = True) Then
                     'YM. El usuario ha sido autenticado correctamente, le mostramos un mensaje de exito y le mostramos el menu. 
+                    ' Asignar el nombre de usuario a la propiedad estática
+                    UsuarioActual.usuarioLogin = txtUsuarioLogin.Text
                     MessageBox.Show("Inicio de sesión exitoso")
                     Dim formularioPrincipal As New frmPrincipal()
                     formularioPrincipal.Show()
