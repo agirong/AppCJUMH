@@ -24,9 +24,9 @@ Partial Class frmRoles
     Private Sub InitializeComponent()
         Me.Usuarios = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ComboBoxRoles = New System.Windows.Forms.ComboBox()
+        Me.CBfichaAtencion = New System.Windows.Forms.CheckBox()
+        Me.PanelPermisos = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CheckBox7 = New System.Windows.Forms.CheckBox()
@@ -36,7 +36,7 @@ Partial Class frmRoles
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Salir = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
+        Me.PanelPermisos.SuspendLayout()
         Me.SuspendLayout()
         '
         'Usuarios
@@ -57,40 +57,40 @@ Partial Class frmRoles
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Seleccione el rol y agregue los permisos:"
         '
-        'ComboBox1
+        'ComboBoxRoles
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(88, 129)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(273, 28)
-        Me.ComboBox1.TabIndex = 3
+        Me.ComboBoxRoles.FormattingEnabled = True
+        Me.ComboBoxRoles.Location = New System.Drawing.Point(88, 129)
+        Me.ComboBoxRoles.Name = "ComboBoxRoles"
+        Me.ComboBoxRoles.Size = New System.Drawing.Size(273, 28)
+        Me.ComboBoxRoles.TabIndex = 3
         '
-        'CheckBox1
+        'CBfichaAtencion
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(13, 42)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(73, 24)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "Form1"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CBfichaAtencion.AutoSize = True
+        Me.CBfichaAtencion.Location = New System.Drawing.Point(13, 42)
+        Me.CBfichaAtencion.Name = "CBfichaAtencion"
+        Me.CBfichaAtencion.Size = New System.Drawing.Size(149, 24)
+        Me.CBfichaAtencion.TabIndex = 0
+        Me.CBfichaAtencion.Text = "Ficha de Atencion"
+        Me.CBfichaAtencion.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'PanelPermisos
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.CheckBox7)
-        Me.Panel1.Controls.Add(Me.CheckBox6)
-        Me.Panel1.Controls.Add(Me.CheckBox5)
-        Me.Panel1.Controls.Add(Me.CheckBox4)
-        Me.Panel1.Controls.Add(Me.CheckBox3)
-        Me.Panel1.Controls.Add(Me.CheckBox2)
-        Me.Panel1.Controls.Add(Me.CheckBox1)
-        Me.Panel1.Location = New System.Drawing.Point(88, 188)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(450, 310)
-        Me.Panel1.TabIndex = 4
+        Me.PanelPermisos.BackColor = System.Drawing.SystemColors.ScrollBar
+        Me.PanelPermisos.Controls.Add(Me.Label2)
+        Me.PanelPermisos.Controls.Add(Me.Button1)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox7)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox6)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox5)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox4)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox3)
+        Me.PanelPermisos.Controls.Add(Me.CheckBox2)
+        Me.PanelPermisos.Controls.Add(Me.CBfichaAtencion)
+        Me.PanelPermisos.Location = New System.Drawing.Point(88, 188)
+        Me.PanelPermisos.Name = "PanelPermisos"
+        Me.PanelPermisos.Size = New System.Drawing.Size(450, 310)
+        Me.PanelPermisos.TabIndex = 4
         '
         'Label2
         '
@@ -115,9 +115,9 @@ Partial Class frmRoles
         Me.CheckBox7.AutoSize = True
         Me.CheckBox7.Location = New System.Drawing.Point(13, 222)
         Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(121, 24)
+        Me.CheckBox7.Size = New System.Drawing.Size(87, 24)
         Me.CheckBox7.TabIndex = 6
-        Me.CheckBox7.Text = "FormUsuarios"
+        Me.CheckBox7.Text = "Usuarios"
         Me.CheckBox7.UseVisualStyleBackColor = True
         '
         'CheckBox6
@@ -125,9 +125,9 @@ Partial Class frmRoles
         Me.CheckBox6.AutoSize = True
         Me.CheckBox6.Location = New System.Drawing.Point(13, 192)
         Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(101, 24)
+        Me.CheckBox6.Size = New System.Drawing.Size(67, 24)
         Me.CheckBox6.TabIndex = 5
-        Me.CheckBox6.Text = "FormRoles"
+        Me.CheckBox6.Text = "Roles"
         Me.CheckBox6.UseVisualStyleBackColor = True
         '
         'CheckBox5
@@ -135,9 +135,9 @@ Partial Class frmRoles
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.Location = New System.Drawing.Point(13, 162)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(73, 24)
+        Me.CheckBox5.Size = New System.Drawing.Size(97, 24)
         Me.CheckBox5.TabIndex = 4
-        Me.CheckBox5.Text = "Form5"
+        Me.CheckBox5.Text = "Casos PPS"
         Me.CheckBox5.UseVisualStyleBackColor = True
         '
         'CheckBox4
@@ -145,9 +145,9 @@ Partial Class frmRoles
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.Location = New System.Drawing.Point(13, 132)
         Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(73, 24)
+        Me.CheckBox4.Size = New System.Drawing.Size(164, 24)
         Me.CheckBox4.TabIndex = 3
-        Me.CheckBox4.Text = "Form4"
+        Me.CheckBox4.Text = "Audiencias Vigentes"
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
         'CheckBox3
@@ -155,9 +155,9 @@ Partial Class frmRoles
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.Location = New System.Drawing.Point(13, 102)
         Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(73, 24)
+        Me.CheckBox3.Size = New System.Drawing.Size(212, 24)
         Me.CheckBox3.TabIndex = 2
-        Me.CheckBox3.Text = "Form3"
+        Me.CheckBox3.Text = "Delegaciones Procuradores"
         Me.CheckBox3.UseVisualStyleBackColor = True
         '
         'CheckBox2
@@ -165,9 +165,9 @@ Partial Class frmRoles
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Location = New System.Drawing.Point(13, 72)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(73, 24)
+        Me.CheckBox2.Size = New System.Drawing.Size(143, 24)
         Me.CheckBox2.TabIndex = 1
-        Me.CheckBox2.Text = "Form2"
+        Me.CheckBox2.Text = "Seguimiento PPS"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'Salir
@@ -185,14 +185,14 @@ Partial Class frmRoles
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(887, 559)
         Me.Controls.Add(Me.Salir)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.PanelPermisos)
+        Me.Controls.Add(Me.ComboBoxRoles)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Usuarios)
         Me.Name = "frmRoles"
         Me.Text = "frmRoles"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.PanelPermisos.ResumeLayout(False)
+        Me.PanelPermisos.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -200,9 +200,9 @@ Partial Class frmRoles
 
     Friend WithEvents Usuarios As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents ComboBoxRoles As ComboBox
+    Friend WithEvents CBfichaAtencion As CheckBox
+    Friend WithEvents PanelPermisos As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents CheckBox7 As CheckBox
