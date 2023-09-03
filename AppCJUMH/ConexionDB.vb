@@ -111,7 +111,9 @@ Public Class ConexionDB
         End Using
     End Sub
 
-    'YM: Hacer una funcion que permita autenticar al usuario. 
+    'YM: Hacer una funcion que permita autenticar al usuario. La funcion develve True o False
+    'True: Hay un usuario con user_umh y contrasena que coincide.
+    'False: No hay un usuario que coincida.
     Public Shared Function AutenticarUsuario(pUsuario As String, pContrasena As String) As Boolean
         Dim existeUsuario = False
         Using connection As New SqlConnection(ConnectionString)
