@@ -77,4 +77,20 @@ Public Class ConexionDB
         Return correoElectronico
     End Function
 
+    'YM: Obtener los permisos especificos de un rol usado en frmRoles para recuperar los permisos del rol seleccioando
+    Public Shared Function GetDataTableRoles(id As Integer) As DataTable
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim dataTable As New DataTable()
+            Dim consulta As String = "SELECT * FROM roles WHERE id = @id"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@id", id) ' Pasar el valor del parámetro "id"
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dataTable)
+            End Using
+            Return dataTable
+        End Using
+    End Function
+    'YM: Actualizar los permisos de un rol en especifico. 
+
 End Class

@@ -28,13 +28,13 @@ Partial Class frmRoles
         Me.CBfichaAtencion = New System.Windows.Forms.CheckBox()
         Me.PanelPermisos = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.BtnGuardar = New System.Windows.Forms.Button()
+        Me.CBusuarios = New System.Windows.Forms.CheckBox()
+        Me.CBroles = New System.Windows.Forms.CheckBox()
+        Me.CBcasosPPS = New System.Windows.Forms.CheckBox()
+        Me.CBaudienciasVigentes = New System.Windows.Forms.CheckBox()
+        Me.CBdelegacionesProcuradores = New System.Windows.Forms.CheckBox()
+        Me.CBseguimientoPPS = New System.Windows.Forms.CheckBox()
         Me.Salir = New System.Windows.Forms.Button()
         Me.PanelPermisos.SuspendLayout()
         Me.SuspendLayout()
@@ -79,13 +79,13 @@ Partial Class frmRoles
         '
         Me.PanelPermisos.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.PanelPermisos.Controls.Add(Me.Label2)
-        Me.PanelPermisos.Controls.Add(Me.Button1)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox7)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox6)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox5)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox4)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox3)
-        Me.PanelPermisos.Controls.Add(Me.CheckBox2)
+        Me.PanelPermisos.Controls.Add(Me.BtnGuardar)
+        Me.PanelPermisos.Controls.Add(Me.CBusuarios)
+        Me.PanelPermisos.Controls.Add(Me.CBroles)
+        Me.PanelPermisos.Controls.Add(Me.CBcasosPPS)
+        Me.PanelPermisos.Controls.Add(Me.CBaudienciasVigentes)
+        Me.PanelPermisos.Controls.Add(Me.CBdelegacionesProcuradores)
+        Me.PanelPermisos.Controls.Add(Me.CBseguimientoPPS)
         Me.PanelPermisos.Controls.Add(Me.CBfichaAtencion)
         Me.PanelPermisos.Location = New System.Drawing.Point(88, 188)
         Me.PanelPermisos.Name = "PanelPermisos"
@@ -101,74 +101,74 @@ Partial Class frmRoles
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Permisos de este rol"
         '
-        'Button1
+        'BtnGuardar
         '
-        Me.Button1.Location = New System.Drawing.Point(13, 263)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(94, 29)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Guardar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnGuardar.Location = New System.Drawing.Point(13, 263)
+        Me.BtnGuardar.Name = "BtnGuardar"
+        Me.BtnGuardar.Size = New System.Drawing.Size(94, 29)
+        Me.BtnGuardar.TabIndex = 5
+        Me.BtnGuardar.Text = "Guardar"
+        Me.BtnGuardar.UseVisualStyleBackColor = True
         '
-        'CheckBox7
+        'CBusuarios
         '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(13, 222)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(87, 24)
-        Me.CheckBox7.TabIndex = 6
-        Me.CheckBox7.Text = "Usuarios"
-        Me.CheckBox7.UseVisualStyleBackColor = True
+        Me.CBusuarios.AutoSize = True
+        Me.CBusuarios.Location = New System.Drawing.Point(13, 222)
+        Me.CBusuarios.Name = "CBusuarios"
+        Me.CBusuarios.Size = New System.Drawing.Size(87, 24)
+        Me.CBusuarios.TabIndex = 6
+        Me.CBusuarios.Text = "Usuarios"
+        Me.CBusuarios.UseVisualStyleBackColor = True
         '
-        'CheckBox6
+        'CBroles
         '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(13, 192)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(67, 24)
-        Me.CheckBox6.TabIndex = 5
-        Me.CheckBox6.Text = "Roles"
-        Me.CheckBox6.UseVisualStyleBackColor = True
+        Me.CBroles.AutoSize = True
+        Me.CBroles.Location = New System.Drawing.Point(13, 192)
+        Me.CBroles.Name = "CBroles"
+        Me.CBroles.Size = New System.Drawing.Size(67, 24)
+        Me.CBroles.TabIndex = 5
+        Me.CBroles.Text = "Roles"
+        Me.CBroles.UseVisualStyleBackColor = True
         '
-        'CheckBox5
+        'CBcasosPPS
         '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(13, 162)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(97, 24)
-        Me.CheckBox5.TabIndex = 4
-        Me.CheckBox5.Text = "Casos PPS"
-        Me.CheckBox5.UseVisualStyleBackColor = True
+        Me.CBcasosPPS.AutoSize = True
+        Me.CBcasosPPS.Location = New System.Drawing.Point(13, 162)
+        Me.CBcasosPPS.Name = "CBcasosPPS"
+        Me.CBcasosPPS.Size = New System.Drawing.Size(97, 24)
+        Me.CBcasosPPS.TabIndex = 4
+        Me.CBcasosPPS.Text = "Casos PPS"
+        Me.CBcasosPPS.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'CBaudienciasVigentes
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(13, 132)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(164, 24)
-        Me.CheckBox4.TabIndex = 3
-        Me.CheckBox4.Text = "Audiencias Vigentes"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.CBaudienciasVigentes.AutoSize = True
+        Me.CBaudienciasVigentes.Location = New System.Drawing.Point(13, 132)
+        Me.CBaudienciasVigentes.Name = "CBaudienciasVigentes"
+        Me.CBaudienciasVigentes.Size = New System.Drawing.Size(164, 24)
+        Me.CBaudienciasVigentes.TabIndex = 3
+        Me.CBaudienciasVigentes.Text = "Audiencias Vigentes"
+        Me.CBaudienciasVigentes.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'CBdelegacionesProcuradores
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(13, 102)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(212, 24)
-        Me.CheckBox3.TabIndex = 2
-        Me.CheckBox3.Text = "Delegaciones Procuradores"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CBdelegacionesProcuradores.AutoSize = True
+        Me.CBdelegacionesProcuradores.Location = New System.Drawing.Point(13, 102)
+        Me.CBdelegacionesProcuradores.Name = "CBdelegacionesProcuradores"
+        Me.CBdelegacionesProcuradores.Size = New System.Drawing.Size(212, 24)
+        Me.CBdelegacionesProcuradores.TabIndex = 2
+        Me.CBdelegacionesProcuradores.Text = "Delegaciones Procuradores"
+        Me.CBdelegacionesProcuradores.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CBseguimientoPPS
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(13, 72)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(143, 24)
-        Me.CheckBox2.TabIndex = 1
-        Me.CheckBox2.Text = "Seguimiento PPS"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CBseguimientoPPS.AutoSize = True
+        Me.CBseguimientoPPS.Location = New System.Drawing.Point(13, 72)
+        Me.CBseguimientoPPS.Name = "CBseguimientoPPS"
+        Me.CBseguimientoPPS.Size = New System.Drawing.Size(143, 24)
+        Me.CBseguimientoPPS.TabIndex = 1
+        Me.CBseguimientoPPS.Text = "Seguimiento PPS"
+        Me.CBseguimientoPPS.UseVisualStyleBackColor = True
         '
         'Salir
         '
@@ -204,12 +204,12 @@ Partial Class frmRoles
     Friend WithEvents CBfichaAtencion As CheckBox
     Friend WithEvents PanelPermisos As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckBox6 As CheckBox
-    Friend WithEvents CheckBox5 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents BtnGuardar As Button
+    Friend WithEvents CBusuarios As CheckBox
+    Friend WithEvents CBroles As CheckBox
+    Friend WithEvents CBcasosPPS As CheckBox
+    Friend WithEvents CBaudienciasVigentes As CheckBox
+    Friend WithEvents CBdelegacionesProcuradores As CheckBox
+    Friend WithEvents CBseguimientoPPS As CheckBox
     Friend WithEvents Salir As Button
 End Class
