@@ -76,6 +76,25 @@
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
+        Try
+            Dim idRol As Integer
+            idRol = Convert.ToInt32(ComboBoxRoles.SelectedValue)
 
+            'Obtener los valores de los combobox 
+            Dim vFichaAtencion As Boolean = CBfichaAtencion.Checked
+            Dim vSeguimientoPPS As Boolean = CBseguimientoPPS.Checked
+            Dim vdelegacionesProcuradores As Boolean = CBdelegacionesProcuradores.Checked
+            Dim vaudienciasVigentes As Boolean = CBaudienciasVigentes.Checked
+            Dim vcasosPPS As Boolean = CBcasosPPS.Checked
+            Dim vroles As Boolean = CBroles.Checked
+            Dim vusuarios As Boolean = CBusuarios.Checked
+
+            'Llamar a la funcion que guardara los datos. 
+            ConexionDB.UpdatePermisosRol(idRol, vFichaAtencion, vSeguimientoPPS, vdelegacionesProcuradores, vaudienciasVigentes, vcasosPPS, vroles, vusuarios)
+
+            MessageBox.Show("Rol " + idRol + " se actualizo exitosamente")
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

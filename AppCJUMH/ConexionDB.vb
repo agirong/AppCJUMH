@@ -92,5 +92,22 @@ Public Class ConexionDB
         End Using
     End Function
     'YM: Actualizar los permisos de un rol en especifico. 
-
+    Public Shared Sub UpdatePermisosRol(id As Integer, pfichaAtencion As Boolean, pseguimientoPPS As Boolean, pdelegacionesProcuradores As Boolean, paudienciasVigentes As Boolean, pcasosPPS As Boolean, proles As Boolean, pusuarios As Boolean)
+        Using connection As New SqlConnection(ConnectionString)
+            connection.Open()
+            Dim consulta As String = "UPDATE roles SET fichaAtencion = @fichaAtencion, seguimientoPPS = @seguimientoPPS, delegacionesProcuradores = @delegacionesProcuradores, audienciasVigentes = @audienciasVigentes, casosPPS = @casosPPS, roles = @roles, usuarios = @usuarios   WHERE id = @id"
+            Using command As New SqlCommand(consulta, connection)
+                command.Parameters.AddWithValue("@id", id)
+                command.Parameters.AddWithValue("@fichaAtencion", pfichaAtencion)
+                command.Parameters.AddWithValue("@seguimientoPPS", pseguimientoPPS)
+                command.Parameters.AddWithValue("@delegacionesProcuradores", pdelegacionesProcuradores)
+                command.Parameters.AddWithValue("@audienciasVigentes", paudienciasVigentes)
+                command.Parameters.AddWithValue("@casosPPS", pcasosPPS)
+                command.Parameters.AddWithValue("@roles", proles)
+                command.Parameters.AddWithValue("@usuarios", pusuarios)
+                ' Ejecutar la consulta de actualización
+                command.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
 End Class
