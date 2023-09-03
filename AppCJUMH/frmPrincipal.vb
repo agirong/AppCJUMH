@@ -56,4 +56,24 @@
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub BotonUsuarios_Click(sender As Object, e As EventArgs) Handles BotonUsuarios.Click
+        'YM. Crear una instancia del formulario que deseas mostrar
+        Dim frmUsuario As New frmUsuario()
+
+        'YM. Mostrar el formulario
+        frmUsuario.Show()
+
+        Me.Hide()
+    End Sub
+
+    Private Sub BotonRoles_Click(sender As Object, e As EventArgs) Handles BotonRoles.Click
+        'YM. Crear una instancia del formulario que deseas mostrar
+        Dim frmRoles As New frmRoles()
+
+        'YM. Mostrar el formulario
+        frmRoles.Show()
+
+        Me.Hide()
+    End Sub
 End Class
