@@ -31,6 +31,8 @@ Partial Class frmPrincipal
         Me.BotonUsuarios = New System.Windows.Forms.Button()
         Me.BotonRoles = New System.Windows.Forms.Button()
         Me.lbUsuarioActual = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnFicha
@@ -115,11 +117,22 @@ Partial Class frmPrincipal
         Me.lbUsuarioActual.TabIndex = 8
         Me.lbUsuarioActual.Text = "Label2"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.AppCJUMH.My.Resources.Resources.usuario
+        Me.PictureBox1.Location = New System.Drawing.Point(46, 29)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(46, 44)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lbUsuarioActual)
         Me.Controls.Add(Me.BotonRoles)
         Me.Controls.Add(Me.BotonUsuarios)
@@ -131,6 +144,7 @@ Partial Class frmPrincipal
         Me.Controls.Add(Me.btnFicha)
         Me.Name = "frmPrincipal"
         Me.Text = "frmPrincipal"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -145,4 +159,5 @@ Partial Class frmPrincipal
     Friend WithEvents BotonUsuarios As Button
     Friend WithEvents BotonRoles As Button
     Friend WithEvents lbUsuarioActual As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
