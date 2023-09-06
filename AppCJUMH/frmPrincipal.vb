@@ -14,13 +14,13 @@
     End Sub
     'YM. Hacer una funcion que oculte todos los botones 
     Private Sub OcultarBotones()
-        btnFicha.Visible = False
-        btnSeguimiento.Visible = False
-        btnDelegacion.Visible = False
-        btnAudiencias.Visible = False
-        btnCasosPPS.Visible = False
-        BotonUsuarios.Visible = False
-        BotonRoles.Visible = False
+        btnFicha.Enabled = False
+        btnSeguimiento.Enabled = False
+        btnDelegacion.Enabled = False
+        btnAudiencias.Enabled = False
+        btnCasosPPS.Enabled = False
+        BotonUsuarios.Enabled = False
+        BotonRoles.Enabled = False
     End Sub
     'YM. Hacer una funcion que muestre los botones en funcion de los permisos del rol que tiene asignado el usuario
     Private Sub MostrarBotones()
@@ -43,13 +43,13 @@
                 Dim vroles As Boolean = row("roles")
                 Dim vusuarios As Boolean = row("usuarios")
 
-                btnFicha.Visible = vFichaAtencion
-                btnSeguimiento.Visible = vSeguimientoPPS
-                btnDelegacion.Visible = vdelegacionesProcuradores
-                btnAudiencias.Visible = vaudienciasVigentes
-                btnCasosPPS.Visible = vcasosPPS
-                BotonUsuarios.Visible = vroles
-                BotonRoles.Visible = vusuarios
+                btnFicha.Enabled = vFichaAtencion
+                btnSeguimiento.Enabled = vSeguimientoPPS
+                btnDelegacion.Enabled = vdelegacionesProcuradores
+                btnAudiencias.Enabled = vaudienciasVigentes
+                btnCasosPPS.Enabled = vcasosPPS
+                BotonUsuarios.Enabled = vroles
+                BotonRoles.Enabled = vusuarios
             Next
 
         Catch ex As Exception
