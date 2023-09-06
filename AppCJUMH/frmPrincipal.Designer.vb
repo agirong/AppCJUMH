@@ -32,6 +32,7 @@ Partial Class frmPrincipal
         Me.BotonRoles = New System.Windows.Forms.Button()
         Me.lbUsuarioActual = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Salir = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -127,11 +128,21 @@ Partial Class frmPrincipal
         Me.PictureBox1.TabIndex = 9
         Me.PictureBox1.TabStop = False
         '
+        'Salir
+        '
+        Me.Salir.Location = New System.Drawing.Point(679, 409)
+        Me.Salir.Name = "Salir"
+        Me.Salir.Size = New System.Drawing.Size(94, 29)
+        Me.Salir.TabIndex = 10
+        Me.Salir.Text = "Salir"
+        Me.Salir.UseVisualStyleBackColor = True
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Salir)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lbUsuarioActual)
         Me.Controls.Add(Me.BotonRoles)
@@ -160,4 +171,5 @@ Partial Class frmPrincipal
     Friend WithEvents BotonRoles As Button
     Friend WithEvents lbUsuarioActual As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Salir As Button
 End Class

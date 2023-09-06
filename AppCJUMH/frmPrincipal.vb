@@ -132,4 +132,14 @@
 
         Me.Hide()
     End Sub
+
+    Private Sub Salir_Click(sender As Object, e As EventArgs) Handles Salir.Click
+        'YM. Crear una instancia del formulario que deseas mostrar
+        Dim frmLogin As New frmLogin()
+        'YM. Mostrar el formulario
+        frmLogin.Show()
+        'YM. Limpiar la varible del usuario actual. 
+        UsuarioActual.usuarioLogin = ""
+        Me.Hide()
+    End Sub
 End Class
