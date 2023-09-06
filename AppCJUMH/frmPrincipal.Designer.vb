@@ -35,34 +35,34 @@ Partial Class frmPrincipal
         '
         'btnFicha
         '
-        Me.btnFicha.Location = New System.Drawing.Point(108, 228)
+        Me.btnFicha.Location = New System.Drawing.Point(57, 261)
         Me.btnFicha.Name = "btnFicha"
-        Me.btnFicha.Size = New System.Drawing.Size(94, 29)
+        Me.btnFicha.Size = New System.Drawing.Size(103, 29)
         Me.btnFicha.TabIndex = 0
         Me.btnFicha.Text = "Ficha"
         Me.btnFicha.UseVisualStyleBackColor = True
         '
         'btnSeguimiento
         '
-        Me.btnSeguimiento.Location = New System.Drawing.Point(225, 228)
+        Me.btnSeguimiento.Location = New System.Drawing.Point(193, 261)
         Me.btnSeguimiento.Name = "btnSeguimiento"
-        Me.btnSeguimiento.Size = New System.Drawing.Size(94, 29)
+        Me.btnSeguimiento.Size = New System.Drawing.Size(123, 29)
         Me.btnSeguimiento.TabIndex = 1
-        Me.btnSeguimiento.Text = "Seguimiento PPS"
+        Me.btnSeguimiento.Text = "Seguimiento"
         Me.btnSeguimiento.UseVisualStyleBackColor = True
         '
         'btnDelegacion
         '
-        Me.btnDelegacion.Location = New System.Drawing.Point(343, 228)
+        Me.btnDelegacion.Location = New System.Drawing.Point(345, 261)
         Me.btnDelegacion.Name = "btnDelegacion"
-        Me.btnDelegacion.Size = New System.Drawing.Size(94, 29)
+        Me.btnDelegacion.Size = New System.Drawing.Size(113, 29)
         Me.btnDelegacion.TabIndex = 2
         Me.btnDelegacion.Text = "Delegaciones"
         Me.btnDelegacion.UseVisualStyleBackColor = True
         '
         'btnAudiencias
         '
-        Me.btnAudiencias.Location = New System.Drawing.Point(462, 228)
+        Me.btnAudiencias.Location = New System.Drawing.Point(496, 261)
         Me.btnAudiencias.Name = "btnAudiencias"
         Me.btnAudiencias.Size = New System.Drawing.Size(94, 29)
         Me.btnAudiencias.TabIndex = 3
@@ -71,7 +71,7 @@ Partial Class frmPrincipal
         '
         'btnCasosPPS
         '
-        Me.btnCasosPPS.Location = New System.Drawing.Point(591, 228)
+        Me.btnCasosPPS.Location = New System.Drawing.Point(629, 261)
         Me.btnCasosPPS.Name = "btnCasosPPS"
         Me.btnCasosPPS.Size = New System.Drawing.Size(94, 29)
         Me.btnCasosPPS.TabIndex = 4
@@ -82,11 +82,11 @@ Partial Class frmPrincipal
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(269, 46)
+        Me.Label1.Location = New System.Drawing.Point(215, 16)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(305, 41)
+        Me.Label1.Size = New System.Drawing.Size(384, 41)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Formulario Principal"
+        Me.Label1.Text = "Consultorio Jurídico UMH"
         '
         'BotonUsuarios
         '
