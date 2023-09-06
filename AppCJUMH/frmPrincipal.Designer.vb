@@ -111,7 +111,7 @@ Partial Class frmPrincipal
         'lbUsuarioActual
         '
         Me.lbUsuarioActual.AutoSize = True
-        Me.lbUsuarioActual.Location = New System.Drawing.Point(98, 33)
+        Me.lbUsuarioActual.Location = New System.Drawing.Point(98, 41)
         Me.lbUsuarioActual.Name = "lbUsuarioActual"
         Me.lbUsuarioActual.Size = New System.Drawing.Size(53, 20)
         Me.lbUsuarioActual.TabIndex = 8
@@ -122,7 +122,7 @@ Partial Class frmPrincipal
         Me.PictureBox1.Image = Global.AppCJUMH.My.Resources.Resources.usuario
         Me.PictureBox1.Location = New System.Drawing.Point(46, 29)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(46, 44)
+        Me.PictureBox1.Size = New System.Drawing.Size(46, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 9
         Me.PictureBox1.TabStop = False
