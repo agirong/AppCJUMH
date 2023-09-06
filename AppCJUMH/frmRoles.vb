@@ -2,6 +2,13 @@
     Private Sub frmRoles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarRoles()
         PanelPermisos.Visible = False
+
+        ' YM. Código para centar frmRoles
+        Dim medirPantalla As Size = Screen.PrimaryScreen.WorkingArea.Size
+        Dim xPosicion As Integer = (medirPantalla.Width - Me.Width) / 2
+        Dim yPosicion As Integer = (medirPantalla.Height - Me.Height) / 2
+        ' Establecer la posición del formulario
+        Me.Location = New Point(xPosicion, yPosicion)
     End Sub
 
     'Ym. Hacer una funcion para llenar el combobox de roles

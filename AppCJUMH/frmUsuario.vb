@@ -3,6 +3,13 @@
 Public Class frmUsuario
     Private Sub frmUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarRoles()
+
+        ' YM. Código para centar frmUsuario
+        Dim medirPantalla As Size = Screen.PrimaryScreen.WorkingArea.Size
+        Dim xPosicion As Integer = (medirPantalla.Width - Me.Width) / 2
+        Dim yPosicion As Integer = (medirPantalla.Height - Me.Height) / 2
+        ' Establecer la posición del formulario
+        Me.Location = New Point(xPosicion, yPosicion)
     End Sub
 
     Private Sub cargarRoles()

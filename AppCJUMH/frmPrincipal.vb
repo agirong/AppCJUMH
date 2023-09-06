@@ -4,16 +4,23 @@
         lbUsuarioActual.Text = nombreDeUsuario
         OcultarBotones()
         MostrarBotones()
+
+        ' YM. Código para centar la pantalla del login
+        Dim medirPantalla As Size = Screen.PrimaryScreen.WorkingArea.Size
+        Dim xPosicion As Integer = (medirPantalla.Width - Me.Width) / 2
+        Dim yPosicion As Integer = (medirPantalla.Height - Me.Height) / 2
+        ' Establecer la posición del formulario
+        Me.Location = New Point(xPosicion, yPosicion)
     End Sub
     'YM. Hacer una funcion que oculte todos los botones 
     Private Sub OcultarBotones()
-        btnFicha.Visible = False
-        btnSeguimiento.Visible = False
-        btnDelegacion.Visible = False
-        btnAudiencias.Visible = False
-        btnCasosPPS.Visible = False
-        BotonUsuarios.Visible = False
-        BotonRoles.Visible = False
+        btnFicha.Enabled = False
+        btnSeguimiento.Enabled = False
+        btnDelegacion.Enabled = False
+        btnAudiencias.Enabled = False
+        btnCasosPPS.Enabled = False
+        BotonUsuarios.Enabled = False
+        BotonRoles.Enabled = False
     End Sub
     'YM. Hacer una funcion que muestre los botones en funcion de los permisos del rol que tiene asignado el usuario
     Private Sub MostrarBotones()
@@ -36,13 +43,13 @@
                 Dim vroles As Boolean = row("roles")
                 Dim vusuarios As Boolean = row("usuarios")
 
-                btnFicha.Visible = vFichaAtencion
-                btnSeguimiento.Visible = vSeguimientoPPS
-                btnDelegacion.Visible = vdelegacionesProcuradores
-                btnAudiencias.Visible = vaudienciasVigentes
-                btnCasosPPS.Visible = vcasosPPS
-                BotonUsuarios.Visible = vroles
-                BotonRoles.Visible = vusuarios
+                btnFicha.Enabled = vFichaAtencion
+                btnSeguimiento.Enabled = vSeguimientoPPS
+                btnDelegacion.Enabled = vdelegacionesProcuradores
+                btnAudiencias.Enabled = vaudienciasVigentes
+                btnCasosPPS.Enabled = vcasosPPS
+                BotonUsuarios.Enabled = vroles
+                BotonRoles.Enabled = vusuarios
             Next
 
         Catch ex As Exception
@@ -123,6 +130,16 @@
         'YM. Mostrar el formulario
         frmRoles.Show()
 
+        Me.Hide()
+    End Sub
+
+    Private Sub Salir_Click(sender As Object, e As EventArgs) Handles Salir.Click
+        'YM. Crear una instancia del formulario que deseas mostrar
+        Dim frmLogin As New frmLogin()
+        'YM. Mostrar el formulario
+        frmLogin.Show()
+        'YM. Limpiar la varible del usuario actual. 
+        UsuarioActual.usuarioLogin = ""
         Me.Hide()
     End Sub
 End Class
