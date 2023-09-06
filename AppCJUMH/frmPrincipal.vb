@@ -4,6 +4,13 @@
         lbUsuarioActual.Text = nombreDeUsuario
         OcultarBotones()
         MostrarBotones()
+
+        ' YM. Código para centar la pantalla del login
+        Dim medirPantalla As Size = Screen.PrimaryScreen.WorkingArea.Size
+        Dim xPosicion As Integer = (medirPantalla.Width - Me.Width) / 2
+        Dim yPosicion As Integer = (medirPantalla.Height - Me.Height) / 2
+        ' Establecer la posición del formulario
+        Me.Location = New Point(xPosicion, yPosicion)
     End Sub
     'YM. Hacer una funcion que oculte todos los botones 
     Private Sub OcultarBotones()
