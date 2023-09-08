@@ -15,7 +15,20 @@
     Private Sub cargarRoles()
         Try
 
-            ComboBoxRoles.DataSource = ConexionDB.GetDataTable("SELECT id,rolNombre FROM roles")
+            Dim dt As DataTable = ConexionDB.GetDataTable("SELECT id, rolNombre FROM roles")
+
+            ' Crea un nuevo DataRow para representar el elemento "Seleccione..."
+            Dim selectRow As DataRow = dt.NewRow()
+            selectRow("id") = 0
+            selectRow("rolNombre") = "Seleccione..."
+
+            ' Agrega el elemento "Seleccione..." al principio de la DataTable
+            dt.Rows.InsertAt(selectRow, 0)
+
+            ' Asigna la DataTable como origen de datos
+            ComboBoxRoles.DataSource = dt
+
+
             ComboBoxRoles.DisplayMember = "rolNombre"
             ComboBoxRoles.ValueMember = "id"
 
