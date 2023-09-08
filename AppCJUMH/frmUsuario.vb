@@ -42,6 +42,7 @@ Public Class frmUsuario
         txtCorreo.Text = ""
         txtUser.Text = ""
         txtContrasena.Text = ""
+        cbRol.SelectedValue = "0"
     End Sub
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Usuarios.Click
 
