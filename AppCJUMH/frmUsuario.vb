@@ -24,6 +24,14 @@ Public Class frmUsuario
         End Try
     End Sub
 
+    Private Sub limpiarCampos()
+        txtNombres.Text = ""
+        txtApellidos.Text = ""
+        txtDNI.Text = ""
+        txtCorreo.Text = ""
+        txtUser.Text = ""
+        txtContrasena.Text = ""
+    End Sub
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Usuarios.Click
 
     End Sub
@@ -65,6 +73,8 @@ Public Class frmUsuario
                 }
                 Dim consulta As String = "INSERT INTO usuarios_umh (nombres, apellidos, dni, correo_umh, user_umh, contrasena, id_rol) VALUES (@nombres, @apellidos, @dni, @correo_umh, @user_umh, @contrasena, @id_rol);"
                 ConexionDB.InsertData(consulta, parametros)
+
+                limpiarCampos()
                 MsgBox("Datos guardados correctamente")
             End If
         Catch ex As Exception
