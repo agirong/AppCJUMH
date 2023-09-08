@@ -99,7 +99,7 @@
             'Llamar a la funcion que guardara los datos. 
             ConexionDB.UpdatePermisosRol(idRol, vFichaAtencion, vSeguimientoPPS, vdelegacionesProcuradores, vaudienciasVigentes, vcasosPPS, vroles, vusuarios)
 
-            MessageBox.Show("Rol " + idRol + " se actualizo exitosamente")
+            MessageBox.Show("El rol se actualizó exitosamente")
         Catch ex As Exception
 
         End Try
