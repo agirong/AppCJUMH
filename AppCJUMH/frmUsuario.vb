@@ -14,8 +14,19 @@ Public Class frmUsuario
 
     Private Sub cargarRoles()
         Try
+            Dim dt As DataTable = ConexionDB.GetDataTable("SELECT id, rolNombre FROM roles")
 
-            cbRol.DataSource = ConexionDB.GetDataTable("SELECT id,rolNombre FROM roles")
+            ' Crea un nuevo DataRow para representar el elemento "Seleccione..."
+            Dim selectRow As DataRow = dt.NewRow()
+            selectRow("id") = 0 ' Puedes asignar un valor especial para el elemento "Seleccione..."
+            selectRow("rolNombre") = "Seleccione..."
+
+            ' Agrega el elemento "Seleccione..." al principio de la DataTable
+            dt.Rows.InsertAt(selectRow, 0)
+
+            ' Asigna la DataTable como origen de datos
+            cbRol.DataSource = dt
+
             cbRol.DisplayMember = "rolNombre"
             cbRol.ValueMember = "id"
 
@@ -24,6 +35,15 @@ Public Class frmUsuario
         End Try
     End Sub
 
+    Private Sub limpiarCampos()
+        txtNombres.Text = ""
+        txtApellidos.Text = ""
+        txtDNI.Text = ""
+        txtCorreo.Text = ""
+        txtUser.Text = ""
+        txtContrasena.Text = ""
+        cbRol.SelectedValue = "0"
+    End Sub
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Usuarios.Click
 
     End Sub
@@ -52,6 +72,8 @@ Public Class frmUsuario
                 MessageBox.Show("Ingrese el usuario")
             ElseIf txtContrasena.Text = "" Then
                 MessageBox.Show("Ingrese la contraseña")
+            ElseIf cbRol.SelectedValue = "0" Then
+                MessageBox.Show("Debe seleccionar el rol del usuario")
             Else
 
                 Dim parametros As SqlParameter() = {
@@ -65,6 +87,8 @@ Public Class frmUsuario
                 }
                 Dim consulta As String = "INSERT INTO usuarios_umh (nombres, apellidos, dni, correo_umh, user_umh, contrasena, id_rol) VALUES (@nombres, @apellidos, @dni, @correo_umh, @user_umh, @contrasena, @id_rol);"
                 ConexionDB.InsertData(consulta, parametros)
+
+                limpiarCampos()
                 MsgBox("Datos guardados correctamente")
             End If
         Catch ex As Exception

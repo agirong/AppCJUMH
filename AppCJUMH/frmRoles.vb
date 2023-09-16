@@ -15,7 +15,20 @@
     Private Sub cargarRoles()
         Try
 
-            ComboBoxRoles.DataSource = ConexionDB.GetDataTable("SELECT id,rolNombre FROM roles")
+            Dim dt As DataTable = ConexionDB.GetDataTable("SELECT id, rolNombre FROM roles")
+
+            ' Crea un nuevo DataRow para representar el elemento "Seleccione..."
+            Dim selectRow As DataRow = dt.NewRow()
+            selectRow("id") = 0
+            selectRow("rolNombre") = "Seleccione..."
+
+            ' Agrega el elemento "Seleccione..." al principio de la DataTable
+            dt.Rows.InsertAt(selectRow, 0)
+
+            ' Asigna la DataTable como origen de datos
+            ComboBoxRoles.DataSource = dt
+
+
             ComboBoxRoles.DisplayMember = "rolNombre"
             ComboBoxRoles.ValueMember = "id"
 
@@ -52,30 +65,34 @@
 
             Dim idRol As Integer
             idRol = Convert.ToInt32(ComboBoxRoles.SelectedValue)
+            If (idRol = 0) Then
+                PanelPermisos.Visible = False
+            Else
+                Dim rolPermisos As New DataTable()
+                rolPermisos = ConexionDB.GetDataTableRoles(idRol)
+                PanelPermisos.Visible = True
 
-            Dim rolPermisos As New DataTable()
-            rolPermisos = ConexionDB.GetDataTableRoles(idRol)
-            PanelPermisos.Visible = True
+                ' Recorre las filas del DataTable de rolPermisos
+                For Each row As DataRow In rolPermisos.Rows
+                    ' Accede a los datos de cada fila por columna
+                    Dim vFichaAtencion As Boolean = row("fichaAtencion")
+                    Dim vSeguimientoPPS As Boolean = row("seguimientoPPS")
+                    Dim vdelegacionesProcuradores As Boolean = row("delegacionesProcuradores")
+                    Dim vaudienciasVigentes As Boolean = row("audienciasVigentes")
+                    Dim vcasosPPS As Boolean = row("casosPPS")
+                    Dim vroles As Boolean = row("roles")
+                    Dim vusuarios As Boolean = row("usuarios")
 
-            ' Recorre las filas del DataTable de rolPermisos
-            For Each row As DataRow In rolPermisos.Rows
-                ' Accede a los datos de cada fila por columna
-                Dim vFichaAtencion As Boolean = row("fichaAtencion")
-                Dim vSeguimientoPPS As Boolean = row("seguimientoPPS")
-                Dim vdelegacionesProcuradores As Boolean = row("delegacionesProcuradores")
-                Dim vaudienciasVigentes As Boolean = row("audienciasVigentes")
-                Dim vcasosPPS As Boolean = row("casosPPS")
-                Dim vroles As Boolean = row("roles")
-                Dim vusuarios As Boolean = row("usuarios")
+                    CBfichaAtencion.Checked = vFichaAtencion
+                    CBseguimientoPPS.Checked = vSeguimientoPPS
+                    CBdelegacionesProcuradores.Checked = vdelegacionesProcuradores
+                    CBaudienciasVigentes.Checked = vaudienciasVigentes
+                    CBcasosPPS.Checked = vcasosPPS
+                    CBroles.Checked = vroles
+                    CBusuarios.Checked = vusuarios
+                Next
 
-                CBfichaAtencion.Checked = vFichaAtencion
-                CBseguimientoPPS.Checked = vSeguimientoPPS
-                CBdelegacionesProcuradores.Checked = vdelegacionesProcuradores
-                CBaudienciasVigentes.Checked = vaudienciasVigentes
-                CBcasosPPS.Checked = vcasosPPS
-                CBroles.Checked = vroles
-                CBusuarios.Checked = vusuarios
-            Next
+            End If
 
         Catch ex As Exception
 
@@ -99,7 +116,7 @@
             'Llamar a la funcion que guardara los datos. 
             ConexionDB.UpdatePermisosRol(idRol, vFichaAtencion, vSeguimientoPPS, vdelegacionesProcuradores, vaudienciasVigentes, vcasosPPS, vroles, vusuarios)
 
-            MessageBox.Show("Rol " + idRol + " se actualizo exitosamente")
+            MessageBox.Show("El rol se actualizó exitosamente")
         Catch ex As Exception
 
         End Try
